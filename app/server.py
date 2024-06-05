@@ -10,11 +10,15 @@ from app.db.database import engine
 from app.models import models
 from app.graph.state import GraphState
 from app.graph.graph import c_rag_app
-
+from app.middleware import time_middleware, cors_middleware
 
 app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
+
+# Middleware
+cors_middleware.middleware(app)
+app.middleware("http")(time_middleware.middleware)
 
 
 @app.get("/")
