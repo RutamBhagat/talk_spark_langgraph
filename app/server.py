@@ -3,10 +3,12 @@ from fastapi.responses import RedirectResponse
 from langserve import add_routes
 from dotenv import load_dotenv, find_dotenv
 
+
 _ = load_dotenv(find_dotenv())
 
 from app.db.database import engine
 from app.models import models
+from app.graph.state import GraphState
 from app.graph.graph import c_rag_app
 
 
@@ -20,8 +22,13 @@ async def redirect_root_to_docs():
     return RedirectResponse("/docs")
 
 
+@app.post("/talk_spark")
+async def code_wizard(request: GraphState):
+    return await c_rag_app.ainvoke(request.dict())
+
+
 # Edit this to add the chain you want to add
-add_routes(app, c_rag_app, path="/code_wizard")
+add_routes(app, c_rag_app, path="/langserve")
 
 if __name__ == "__main__":
     import uvicorn
