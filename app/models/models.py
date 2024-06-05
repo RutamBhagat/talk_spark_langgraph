@@ -1,5 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, Boolean
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.dialects.postgresql import JSON
 from app.db.database import Base
 

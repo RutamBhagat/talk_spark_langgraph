@@ -1,0 +1,779 @@
+{
+  "https://www.linkedin.com/in/andrewyng": {
+    "public_identifier": "andrewyng",
+    "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/andrewyng/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240425%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240425T195135Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=ada9bab03d7e3145234427e48f709886963361b9b30df2ac47b85e0a4685954a",
+    "first_name": "Andrew",
+    "last_name": "Ng",
+    "full_name": "Andrew Ng",
+    "follower_count": 1530716,
+    "occupation": "Founder at DeepLearning.AI",
+    "headline": "Founder of DeepLearning.AI; Managing General Partner of AI Fund; Founder and CEO of Landing AI",
+    "summary": "Personal home page: http://andrewng.org ",
+    "country": "US",
+    "country_full_name": "United States of America",
+    "city": "Palo Alto",
+    "state": "California",
+    "experiences": [
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 2018
+        },
+        "ends_at": null,
+        "company": "AI Fund",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/aifund",
+        "company_facebook_profile_url": null,
+        "title": "Managing General Partner",
+        "description": "AI Fund is a venture studio that partners with entrepreneurs to build AI companies that move humanity forward. We don't just provide capital, we actively help build the company: we seek to play at least a minor co-founder role in the companies we engage in. \n\nAfter identifying a concrete startup idea, we actively help the founder validate both customer need and technical feasibility (often collaborating to build a technical prototype), help shape the AI technology roadmap, the go-to-market, and help recruit the key leaders, including the AI engineering team. \n\nBecause AI is a general purpose technology that can be applied to numerous sectors -- including ones that we at AI Fund don't have expertise in -- we partner with subject matter experts (SMEs) in logistics, healthcare, education, relationships, finance, and other sectors. By leveraging our AI expertise and the SME's expertise in an important application sector, we can build a promising AI business in that sector. \n\nWe take responsible AI seriously and will, on ethical grounds, choose not to pursue projects that we otherwise assess to be financially sound.",
+        "location": null,
+        "logo_url": "https://media.licdn.com/dms/image/C4E0BAQFbE9Zab6cQEg/company-logo_400_400/0/1648235376637/aifund_logo?e=1720656000&v=beta&t=l0KulDvB5O9DPs5FqVoVsfs0znIuAZ6RCLOA2EK-G7I"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 2012
+        },
+        "ends_at": null,
+        "company": "Coursera",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/coursera",
+        "company_facebook_profile_url": null,
+        "title": "Co-Founder and Chairman",
+        "description": "Coursera (NYSE: COUR) envisions a world where anyone, anywhere has the power to transform their lives through learning. Coursera had started with my Machine Learning class and a nascent online education product I had built at Stanford. I served as the company's Co-CEO in the early years with day-to-day responsibility for product, engineering, sales, marketing and operations, and remain Chairman of the company today. Coursera now has over 100M learners, and we partner with more than 275 leading universities and companies to bring flexible, affordable, job-relevant online learning to individuals and organizations. Coursera's offerings include courses, specializations, job-ready professional certificates and degree programs. http://coursera.org",
+        "location": "Mountain View, CA",
+        "logo_url": "https://media.licdn.com/dms/image/C4D0BAQGexnfBxeEG-g/company-logo_400_400/0/1630530042036/coursera_logo?e=1720656000&v=beta&t=6Ae1r35Emge2RLFg46msYjy0IwW9SWnAIhaGEw_vfME"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 6,
+          "year": 2017
+        },
+        "ends_at": null,
+        "company": "DeepLearning.AI",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/deeplearningai",
+        "company_facebook_profile_url": null,
+        "title": "Founder",
+        "description": "DeepLearning.AI provides technical training on Generative AI, Machine Learning, Deep Learning, and other topics. We also offer a widely read newsletter, The Batch (thebatch.ai), that covers what matters in AI right now. \n\nOur courses are often created with industry-leading AI companies (AWS, Google, OpenAI, etc.), and we offer both short courses that can be completed in an hour, and longer courses and specializations hosted on Coursera that give you a solid foundation in some aspect of AI. These courses are designed to offer hands-on practice with AI technologies, and you will gain practical, job-ready skills. \n\nWhether you are just starting out in AI or seeking to further an existing career, come see if we can help, at http://deeplearning.ai!",
+        "location": "Palo Alto, California, United States",
+        "logo_url": "https://media.licdn.com/dms/image/C560BAQEHKffoI8RwIQ/company-logo_400_400/0/1630672537710/deeplearningai_logo?e=1720656000&v=beta&t=xAs7RhdgbcprLBhat_zy4RvFdLcGQuy6Zkw-_bu4zYc"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 10,
+          "year": 2017
+        },
+        "ends_at": null,
+        "company": "Landing AI",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/landing-ai",
+        "company_facebook_profile_url": null,
+        "title": "Founder & CEO",
+        "description": "Landing AI provides software that makes computer vision easy. Using Landing AI's tools, many vision projects that used to take 6-12 months can now be built in days, and deployed at either cloud or edge. \n\nEnabled by the Transformer neural network (created by the Google Brain team), the Generative AI revolution has arrived in text processing. By scaling up the more recent Vision Transformer neural network, we believe a revolution is also coming in image processing. Landing AI is developing these technologies to offer an easy, low code platform for computer vision, which users are applying in manufacturing inspection, industrial automation, life sciences, agriculture, geo-spatial imagery, and other sectors. \n\nKey technical innovations include Data-centric AI, the discipline of systematically engineering data to build an AI system, and Visual Prompting, which allows you to build a computer vision system in seconds, via specifying a \"visual prompt\" by swiping a handful of pixels.",
+        "location": "Palo Alto, California",
+        "logo_url": "https://media.licdn.com/dms/image/C560BAQFH1bjvMK-Jtw/company-logo_400_400/0/1630604959917/landing_ai_logo?e=1720656000&v=beta&t=Ekid9YjkqOzIyd7Wb3BqlBuXhzWn1igOw_wTsjYnuKk"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 9,
+          "year": 2002
+        },
+        "ends_at": null,
+        "company": "Stanford University",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/stanford-university",
+        "company_facebook_profile_url": null,
+        "title": "Adjunct Professor of Computer Science",
+        "description": "I was the Director of the Stanford AI Lab (https://ai.stanford.edu/), home to 20+ faculty members and research groups, and a tenured professor in Stanford's Computer Science department. More recently, I switched to an Adjunct Professor role. \n\nMy research group's work focused on AI, Deep Learning, Machine Learning and Robotics. Notable projects include early work in Deep Learning (that led to the founding of Google Brain), early work in online education (that led to the founding of Coursera), ROS (a widely used open-source robotics development platform), and work on Reinforcement Learning for robotic control (such as the Stanford autonomous helicopter). More recent efforts include applications of AI to Healthcare and to Climate Change.",
+        "location": null,
+        "logo_url": "https://media.licdn.com/dms/image/C560BAQHr9suxyJBXMw/company-logo_400_400/0/1635534378870/stanford_university_logo?e=1720656000&v=beta&t=vG7rapYweWcBiRJa10UQ40VIAZhHtsbiDcRbEvkZHH4"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 6,
+          "year": 2017
+        },
+        "ends_at": {
+          "day": 30,
+          "month": 6,
+          "year": 2019
+        },
+        "company": "drive.ai",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/drive.ai",
+        "company_facebook_profile_url": null,
+        "title": "Member of Board Of Directors",
+        "description": "Drive.ai built and operated a fleet of self-driving cars, and was successfully acquired by Apple.",
+        "location": "Mountain View CA",
+        "logo_url": "https://media.licdn.com/dms/image/C4D0BAQE_2uhaP0qrJQ/company-logo_400_400/0/1631349485711?e=1720656000&v=beta&t=yFv-9w3XKIu8fym_9i042dU19b1LHaBZjwyG4VaFkno"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 5,
+          "year": 2014
+        },
+        "ends_at": {
+          "day": 30,
+          "month": 4,
+          "year": 2017
+        },
+        "company": "Baidu, Inc.",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/baidu-inc",
+        "company_facebook_profile_url": null,
+        "title": "Chief Scientist & VP ",
+        "description": "I led Baidu's AI Group, a 1,300 person team including 300 in Baidu Research, and was responsible for the company's AI technology and strategy. My team built Baidu up to be China's leading AI company of its time. \n\nThe AI Group delivered dozens of AI projects that significantly improved Baidu search, advertising, maps, delivery logistics, voice search, security, consumer finance and many more. I was also responsible for initiating and launching new AI-powered businesses, such as DuerOS (a very successful conversational computer platform), Autonomous Driving (now Apollo), and others. Other major products that I was responsible for included Image Search and the Baidu keyboard (with over 100M MAU).",
+        "location": "Sunnyvale, CA",
+        "logo_url": "https://media.licdn.com/dms/image/C560BAQHZjF01MQpX9w/company-logo_400_400/0/1631350755176?e=1720656000&v=beta&t=U35_NK_xQvUblxUnywqDirIiedzvjc8ysnwv9Nq1XYs"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 2011
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 12,
+          "year": 2012
+        },
+        "company": "Google",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/google",
+        "company_facebook_profile_url": null,
+        "title": "Founder and Lead, Google Brain (Deep Learning) project",
+        "description": "I started and led the Google Brain team, which helped Google transform into a modern AI company by developing advanced Deep Learning technology, and moving the company to adopt it for numerous business applications. The Google Brain team's success was the inspiration for many other companies to build up their own AI teams. \n\nUsing Google's compute infrastructure, we started by proving that scaling up data and compute leads to huge performance improvements, and also created the famous \"Google Cat\" demonstration of AI learning to recognize objects (such as cats) by itself. Our technology for building large scale AI models was the pre-cursor to TensorFlow, and also allowed us to take deep learning to valuable Google products including ads, speech recognition, maps, and many others. http://www.nytimes.com/2012/06/26/technology/in-a-big-network-of-computers-evidence-of-machine-learning.html",
+        "location": "Mountain View, CA",
+        "logo_url": "https://media.licdn.com/dms/image/C4D0BAQHiNSL4Or29cg/company-logo_400_400/0/1631311446380?e=1720656000&v=beta&t=GcV4GMAo3Ps2UturZlaOfdolgjylp8K_kTSz1rq4KF4"
+      }
+    ],
+    "education": [
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 2003
+        },
+        "ends_at": null,
+        "field_of_study": "Computer Science ",
+        "degree_name": "Doctor of Philosophy - PhD",
+        "school": "University of California, Berkeley",
+        "school_linkedin_profile_url": "https://www.linkedin.com/company/2517/",
+        "school_facebook_profile_url": null,
+        "description": null,
+        "logo_url": "https://media.licdn.com/dms/image/C4D0BAQGF8uB7vUoJ0Q/company-logo_400_400/0/1639585477530/uc_berkeley_logo?e=1720656000&v=beta&t=gs1umkYywk4cjWu9H_kcV4vmepiMXiKTmK_B6GPY2rM",
+        "grade": null,
+        "activities_and_societies": null
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 1998
+        },
+        "ends_at": null,
+        "field_of_study": "Electrical Engineering and Computer Science",
+        "degree_name": "Master of Science - MS",
+        "school": "Massachusetts Institute of Technology",
+        "school_linkedin_profile_url": "https://www.linkedin.com/company/1503/",
+        "school_facebook_profile_url": null,
+        "description": null,
+        "logo_url": "https://media.licdn.com/dms/image/D560BAQH-UXRfIDIKug/company-logo_400_400/0/1689799729035/mit_logo?e=1720656000&v=beta&t=IWPZ0YBhoHDxrZ70WGgVi7DZNaOMZ8VTML9zCEYeFno",
+        "grade": null,
+        "activities_and_societies": null
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 1997
+        },
+        "ends_at": null,
+        "field_of_study": "Math/Computer Science, Statistics and Economics (triple major) ",
+        "degree_name": "Bachelor of Science - BS",
+        "school": "Carnegie Mellon University",
+        "school_linkedin_profile_url": "https://www.linkedin.com/company/3147/",
+        "school_facebook_profile_url": null,
+        "description": null,
+        "logo_url": "https://media.licdn.com/dms/image/C560BAQH0rMqWuDcNzA/company-logo_400_400/0/1656670432790/carnegie_mellon_university_logo?e=1720656000&v=beta&t=4j7fHCCvTjIxNpKbFy9Wq7PwoDUBqXbFDIFLtI-GKyU",
+        "grade": null,
+        "activities_and_societies": null
+      }
+    ],
+    "connections": 1614
+  },
+  "https://www.linkedin.com/in/leonnoel": {
+    "public_identifier": "leonnoel",
+    "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/leonnoel/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240425%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240425T195233Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=9bf75fd160a57ce8aeeca66e1c51a72908d2bea691a5fa4e6773cfbd415abfe9",
+    "background_cover_image_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/leonnoel/cover?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240425%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240425T195233Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8e94b66cad0b16aa8661d645adaa27aefc7c7f7c1058aa1112384b44209eda87",
+    "first_name": "Leon",
+    "last_name": "Noel",
+    "full_name": "Leon Noel",
+    "follower_count": 2717,
+    "occupation": "Managing Director of Engineering at Resilient Coders",
+    "headline": "Managing Director of Engineering, Resilient Coders",
+    "summary": "Leon Noel is an internationally recognized software developer and entrepreneur. Before joining the Resilient Coders team, he co-founded SocialSci, a scientific surveying company relied on by over 4000 academic institutions and held an associate position at Harvard University. Besides his lecturing work at Harvard Business School, MIT Sloan School of Business, and General Assembly, Leon has also worked with major brands such as Shawmut Construction, BMW and Capital One to help train their engineering teams and bring new technology to market. His technological pursuits have been featured in numerous publications including Tech Crunch, Black Enterprise, and the Boston Globe.",
+    "country": "US",
+    "country_full_name": "United States of America",
+    "city": "Boston",
+    "state": "Massachusetts",
+    "experiences": [
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 8,
+          "year": 2020
+        },
+        "ends_at": null,
+        "company": "100Devs",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/100devs",
+        "company_facebook_profile_url": null,
+        "title": "Interim CTO",
+        "description": null,
+        "location": "Los Angeles, California, United States",
+        "logo_url": "https://media.licdn.com/dms/image/C4E0BAQGIlYsjeJ1xcg/company-logo_400_400/0/1630628692215?e=1709164800&v=beta&t=G09czojC6F9KZg9THEgQdhxKC3ZjHqhpTkT5CutoTG4"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 12,
+          "year": 2013
+        },
+        "ends_at": null,
+        "company": "General Assembly",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/generalassembly",
+        "company_facebook_profile_url": null,
+        "title": "Distinguished Faculty ",
+        "description": null,
+        "location": "Boston, Massachusetts, United States",
+        "logo_url": "https://media.licdn.com/dms/image/C4E0BAQEwAxD22k-HBw/company-logo_400_400/0/1630655071297/generalassembly_logo?e=1709164800&v=beta&t=ls0ULsXALOcUGzKhVxDuLTwIBamgIbyETQycCO0F284"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 12,
+          "year": 2016
+        },
+        "ends_at": null,
+        "company": "Resilient Coders",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/resilient-coders",
+        "company_facebook_profile_url": null,
+        "title": "Managing Director of Engineering",
+        "description": null,
+        "location": "Boston, Massachusetts, United States",
+        "logo_url": "https://media.licdn.com/dms/image/C560BAQH-2C6M4VzJFg/company-logo_400_400/0/1631364029138?e=1709164800&v=beta&t=gtsyuZANo2ybinQAZxXQi73bm1FAU32yrF-Npm9ZvGs"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 5,
+          "year": 2009
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 12,
+          "year": 2016
+        },
+        "company": "SocialSci",
+        "company_linkedin_profile_url": null,
+        "company_facebook_profile_url": null,
+        "title": "Co-Founder & CEO",
+        "description": "A Boston based startup focused on furthering science and bringing academic experimentation online. (TechStars and Dog Patch Labs incubated)",
+        "location": null,
+        "logo_url": null
+      }
+    ],
+    "education": [
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 2006
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 12,
+          "year": 2010
+        },
+        "field_of_study": null,
+        "degree_name": null,
+        "school": "Yale University",
+        "school_linkedin_profile_url": "https://www.linkedin.com/company/15248569/",
+        "school_facebook_profile_url": null,
+        "description": null,
+        "logo_url": "https://media.licdn.com/dms/image/C560BAQGGJUjGgSYcWQ/company-logo_400_400/0/1631385636084?e=1709164800&v=beta&t=iZTgnAp86bdBQuQtXTZVdqK2q3_Fz0FzY6E-dyM1ObA",
+        "grade": null,
+        "activities_and_societies": null
+      }
+    ],
+    "recommendations": [
+      "Gene Babon\n\n\n\nEvery Mick Jagger needs a Keith Richards.  Leon is my Keith Richards.  Leon was my teaching assistant for a 60-hour Front-End Web Development course.  I was the lead instructor.  Leon's knowledge and experience in HTML5, CSS, JavaScript and jQuery was a main driver in delivering successful outcomes for the students in the class.  He filled in gaps in my knowledge.  He gave generously of his time.  He championed the program and demonstrated genuine concern for each student's success.  Leon is now his own front man co-leading his own team of front-end web developers in training.  Leon delivers results by combining technical curiosity with interpersonal charm.  Leon rocks!"
+    ],
+    "similarly_named_profiles": [
+      {
+        "name": "Leon Noel",
+        "link": "https://uk.linkedin.com/in/leon-noel-3b118b14",
+        "summary": "Service Delivery Manager at RICS",
+        "location": "Coventry"
+      },
+      {
+        "name": "Leon Noel",
+        "link": "https://uk.linkedin.com/in/leon-noel-664a263a",
+        "summary": "IT Service Management, IT Change, IT ConsultingTalks about #siam, #itconsulting, #ittransformation, #itassetmanagement, and #itservicemanagement",
+        "location": "Greater Coventry Area"
+      },
+      {
+        "name": "Leon Noel",
+        "link": "https://www.linkedin.com/in/leon-noel-b1390a155",
+        "summary": "Applications / Web Developer  . www(dot)moleonnoeljr(dot)com Java Python C++",
+        "location": "Clermont, FL"
+      },
+      {
+        "name": "Leon Noel",
+        "link": "https://www.linkedin.com/in/leon-noel-01bb6b61",
+        "summary": "Leon Noel | Safety Manager",
+        "location": "Peru, IL"
+      }
+    ],
+    "groups": [
+      {
+        "name": "JavaScript",
+        "url": "https://www.linkedin.com/groups/121615"
+      },
+      {
+        "name": "#100Devs",
+        "url": "https://www.linkedin.com/groups/9037281"
+      }
+    ]
+  },
+  "https://in.linkedin.com/in/warikoo": {
+    "public_identifier": "warikoo",
+    "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/warikoo/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240425%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240425T195310Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b27f1ff5bf24e6097781366d1a8ddaf32ba313a0b3cdb3f0de7e77812e659e8f",
+    "background_cover_image_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/warikoo/cover?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240425%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240425T195310Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=315011a7dfdcebc095b1826076468d0c05f1588d3b610620cf9dfb77018eb551",
+    "first_name": "Ankur",
+    "last_name": "Warikoo",
+    "full_name": "Ankur Warikoo",
+    "follower_count": 2273882,
+    "occupation": "Founder at HelpClub",
+    "headline": "Founder @WebVeda, Content creator @wariCrew, Speaker, Author. Eternal Optimist.",
+    "summary": "With over 15 years of experience in the internet and technology industry, I have founded, invested in, and mentored several successful ventures. \n\nCurrently, I am the founder of WebVeda, an online school that helps young professionals become life-ready by teaching them skills such as entrepreneurship, career management, and personal growth. \nAs of October 2023, WebVeda has over 370,000 paid students across the world, with an average completion rate of 72%.\n\nI am also a content creator with a passion for sharing my insights, stories, and tips on personal finance, startups, careers, and education. I have a community of 10M+ followers across various social media platforms, where I post engaging and informative content regularly. \n\nI have also written two bestselling books, \"DO EPIC SHIT\" and \"GET EPIC SHIT DONE\", that have inspired millions of readers to pursue their passion and potential. \n\nMy mission is to help people make decisions in life from a point of awareness and not ignorance.",
+    "country": "IN",
+    "country_full_name": "India",
+    "experiences": [
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 7,
+          "year": 2014
+        },
+        "ends_at": null,
+        "company": "Internet & Technology Companies",
+        "company_linkedin_profile_url": null,
+        "company_facebook_profile_url": null,
+        "title": "Startup Investor",
+        "description": "I invest in growth stage startups, with a focus on consumer internet startups. \n\nI look for fearless teams with a strong risk appetite, willingness to get uncomfortable and curiosity that of a child! \nConnect with me on warikoo@gmail.com",
+        "location": "India",
+        "logo_url": null
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 11,
+          "year": 2023
+        },
+        "ends_at": null,
+        "company": "HelpClub",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/helpclub/",
+        "company_facebook_profile_url": null,
+        "title": "Founder",
+        "description": "HelpClub is an anon app where help meets privacy",
+        "location": null,
+        "logo_url": "https://media.licdn.com/dms/image/D4E0BAQHbGPI1dks2SA/company-logo_400_400/0/1709041717454/helpclub_logo?e=1720051200&v=beta&t=fdb9xLsSrweta56NBtKPRxqT0pXQGdgqhS-VeK6uxKM"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 10,
+          "year": 2019
+        },
+        "ends_at": null,
+        "company": "nearbuy.com",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/nearbuy-india/",
+        "company_facebook_profile_url": null,
+        "title": "Cofounder & Board Member",
+        "description": "In November 2019, I stepped down as the CEO of nearbuy.com, with my 2 cofounders taking operational charge of the company. \n\nI continue to be a shareholder and serve on the board of the company.",
+        "location": "India",
+        "logo_url": "https://media.licdn.com/dms/image/C510BAQEwbk0Z6FLRIA/company-logo_400_400/0/1630587255695/nearbuy_india_logo?e=1720051200&v=beta&t=NNBVvKjzvRhauXl44msoYh6M4Z7fszoQ_okEwM1fm5g"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 8,
+          "year": 2015
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 10,
+          "year": 2019
+        },
+        "company": "nearbuy.com",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/nearbuy-india/",
+        "company_facebook_profile_url": null,
+        "title": "Cofounder & CEO",
+        "description": "India's largest commerce platform for everything local\nwww.nearbuy.com\n\nnearbuy.com happened as a Management Buyout of Groupon's India business. We partnered with Sequoia Capital India and created an independent company, called nearbuy.com\n\nIn 2017, Paytm invested in the company, and we merged with Little App, to create a 88% market share company. Little + nearbuy.com are run by the management team of nearbuy.com",
+        "location": "India",
+        "logo_url": "https://media.licdn.com/dms/image/C510BAQEwbk0Z6FLRIA/company-logo_400_400/0/1630587255695/nearbuy_india_logo?e=1720051200&v=beta&t=NNBVvKjzvRhauXl44msoYh6M4Z7fszoQ_okEwM1fm5g"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 10,
+          "year": 2019
+        },
+        "ends_at": null,
+        "company": "wariCrew",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/waricrew/",
+        "company_facebook_profile_url": null,
+        "title": "Content Creator",
+        "description": "I create content on Personal Finance, Career, Relationships and Personal Growth. \nAs of Oct 2023, I have 10M+ cumulative followers across platforms. \n\nI have been creating content since 2005 (my blog, which is still maintained). \nMy LinkedIn journey started in 2013.\nYT and IG in 2017.\n\nAll of this is possible because of my team @waricrew - a bunch of young, eager and curious minds.",
+        "location": null,
+        "logo_url": "https://media.licdn.com/dms/image/D4D0BAQGCdxSQyI4utw/company-logo_400_400/0/1664431990429/waricrew_logo?e=1720051200&v=beta&t=UrOeTee51lRmEOhn2Spe86ZLuX2Iuk_Knto1YowqcoE"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 3,
+          "year": 2020
+        },
+        "ends_at": null,
+        "company": "WebVeda",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/webveda/",
+        "company_facebook_profile_url": null,
+        "title": "Founder",
+        "description": "WebVeda is an online school to make young professionals life-ready.\n\nCourses on WebVeda are affordable, self-paced, come with 100% refund policy and lifetime upgrades. \nThey hope to teach what school and college ought to have, but didn't. \nSkills such as time management, communication, personal finance, generating side incomes, how to think like an entrepreneur.\n\nAs of Oct 2023, 370,000+ students have taken our paid courses, with an average completion rate of ~72%.\n\nWe launch 4 courses every year, in addition to dubbed version of existing courses in regional and international languages.",
+        "location": null,
+        "logo_url": "https://media.licdn.com/dms/image/D4D0BAQErSvnWSrZvTQ/company-logo_400_400/0/1695795253816/zaan_webveda_private_limited_logo?e=1720051200&v=beta&t=K03u9ZD2PrDFHjH9Q1f3WWMnUgnZl6Y9i2dEZkGu7iA"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 7,
+          "year": 2014
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 7,
+          "year": 2017
+        },
+        "company": "Indian School of Business",
+        "company_linkedin_profile_url": "https://www.linkedin.com/school/indian-school-of-business/",
+        "company_facebook_profile_url": null,
+        "title": "Board Member",
+        "description": "Part of ISB's Next Generation Leaders Board (NGLB)\n\nThe NGLB comprises a group of young Indian and global leaders representing the business, political, academic, government and development sectors who provide thought leadership and strategic advice to the Dean and the Executive Board to shape the future direction of the School.\nhttp://www.isb.edu/about-isb/leadership-and-governance/next-generation-leaders-board",
+        "location": "New Delhi Area, India",
+        "logo_url": "https://media.licdn.com/dms/image/C560BAQF_fJFzgl3vKA/company-logo_400_400/0/1672230749864/indian_school_of_business_logo?e=1720051200&v=beta&t=eRQ4LXPBJy77XxU0nsJryRUzZq6_shcinPsf23AT7W8"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 3,
+          "year": 2011
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 7,
+          "year": 2015
+        },
+        "company": "Groupon",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/groupon/",
+        "company_facebook_profile_url": null,
+        "title": "CEO, India",
+        "description": "Started the India business for Groupon in 2011 as its founding CEO. \nFirst office, first employee, first merchant. \n\nDid a management buyout in August 2015, to convert Groupon India into nearbuy.com - independent of the Groupon portfolio.",
+        "location": "India",
+        "logo_url": "https://media.licdn.com/dms/image/D4E0BAQHGY3um1bs0lg/company-logo_400_400/0/1688371559361/groupon_logo?e=1720051200&v=beta&t=Ft_oleq4WX73r1yYC5B28733HDCGn56kfvs0mDHKyFA"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 6,
+          "year": 2013
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 12,
+          "year": 2014
+        },
+        "company": "Groupon",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/groupon/",
+        "company_facebook_profile_url": null,
+        "title": "Head, Groupon APAC Emerging Markets (India, Indonesia, Thailand, Philippines)",
+        "description": "Managing the APAC Emerging Markets Regions for Groupon, comprising India, Indonesia, Thailand and Philippines. \n\nThe region identifies the future growth region for Groupon, with over 245Mn Internet users, expected to grow to 400Mn by 2015\n\nFor any suggestions and feedback on any of these Groupon markets - please do not hesitate to connect directly on ankur.warikoo@groupon.com",
+        "location": "Asia",
+        "logo_url": "https://media.licdn.com/dms/image/D4E0BAQHGY3um1bs0lg/company-logo_400_400/0/1688371559361/groupon_logo?e=1720051200&v=beta&t=Ft_oleq4WX73r1yYC5B28733HDCGn56kfvs0mDHKyFA"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 12,
+          "year": 2010
+        },
+        "ends_at": {
+          "day": 30,
+          "month": 4,
+          "year": 2012
+        },
+        "company": "Rocket Internet GmbH",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/rocket-internet-se/",
+        "company_facebook_profile_url": null,
+        "title": "Venture Partner",
+        "description": "Worked as a Venture Partner for Rocket Internet, setting up their India office alongwith 2 other Venture Partners. Part of the pre-launch team for Jabong.com before moving onto Groupon (which, at that time, was also a Rocket Internet Investment)\n\nFounded in 2007, Rocket Internet GmbH has its headquarters in Berlin. Rocket supports internet startups in more than twenty countries around the world.\nSome of its best-known Internet projects are Zalando, FoodPanda, Groupon (formerly CityDeal) amongst others.",
+        "location": null,
+        "logo_url": "https://media.licdn.com/dms/image/C510BAQHXANtSz2TYzQ/company-logo_400_400/0/1631403106850?e=1720051200&v=beta&t=zFkW23DfHgZl9MC8KiTydp4_CeX0GNQQTRnuoo4pbdU"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 4,
+          "year": 2007
+        },
+        "ends_at": {
+          "day": 30,
+          "month": 9,
+          "year": 2010
+        },
+        "company": "Accentium Web",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/accentium-web-pvt-ltd/",
+        "company_facebook_profile_url": null,
+        "title": "Co-founder",
+        "description": "April 2007 - Mar 2009: Part Time\nMar 2009 - Sep 2010: Full Time\n\nAccentium was started by Vivek Pahwa, where Umang and I joined as Co-Founders during the course. Vivek continues to act as the CEO of Accentium Web. \n\nOperated in a part-time capacity alongwith my full-time commitment at ATK from 2007 to 2009. Jumped fulltime into Accentium in April 2009. Exited from the venture in Sep 2010. \n\nAccentium back then operated a portfolio of 6 websites, spanning products and services\n\nGaadi.com \n**Gaadi was sold to MIH (Naspers) Group in March 2011 - http://www.medianama.com/2011/02/223-mih-group-acquires-majority-stake-in-gaadi-com/\n\nSecondShaadi.com - India's No. 1 site for people looking for a Second Marriage and the 4th largest matrimonial site in India\n\nStudyNation.com \nTaaza.com \nSitaGita.com \nAdLift",
+        "location": null,
+        "logo_url": "https://media.licdn.com/dms/image/C4E0BAQErHWC7TGU1Bg/company-logo_400_400/0/1631341281811?e=1720051200&v=beta&t=I3EG9wy69mjWwO3l_hRQfxZvOmhDBwu0j7OXHGPjxrM"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 5,
+          "year": 2006
+        },
+        "ends_at": {
+          "day": 30,
+          "month": 4,
+          "year": 2009
+        },
+        "company": "A.T. Kearney",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/kearney/",
+        "company_facebook_profile_url": null,
+        "title": "Associate",
+        "description": "Part of ATK's Consulting Team in India. Handled projects across multiple industries, specifically Media &amp; Entertainment, Retail, Real Estate, Private Equity and Oil &amp; Gas. \n\nWorked in Dubai and New York, in addition to India-based projects.",
+        "location": null,
+        "logo_url": "https://media.licdn.com/dms/image/D560BAQFEqKcpxSe82g/company-logo_400_400/0/1710516836709/kearney_logo?e=1720051200&v=beta&t=Z_78D-yHx19eSSYjQZYWE4-SZd2DNRbkMkh76pjNgTg"
+      }
+    ],
+    "education": [
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 2005
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 1,
+          "year": 2006
+        },
+        "field_of_study": "Finance",
+        "degree_name": "MBA",
+        "school": "Indian School of Business",
+        "school_linkedin_profile_url": null,
+        "school_facebook_profile_url": null,
+        "description": null,
+        "logo_url": "https://media.licdn.com/dms/image/C560BAQF_fJFzgl3vKA/company-logo_400_400/0/1672230749864/indian_school_of_business_logo?e=1720051200&v=beta&t=eRQ4LXPBJy77XxU0nsJryRUzZq6_shcinPsf23AT7W8",
+        "grade": null,
+        "activities_and_societies": null
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 2002
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 1,
+          "year": 2004
+        },
+        "field_of_study": "Astronomy and Astrophysics",
+        "degree_name": "MS",
+        "school": "Michigan State University",
+        "school_linkedin_profile_url": null,
+        "school_facebook_profile_url": null,
+        "description": null,
+        "logo_url": "https://media.licdn.com/dms/image/C560BAQFx0VIjYYSXBw/company-logo_400_400/0/1645471386372/michigan_state_university_logo?e=1720051200&v=beta&t=r2SVdlDulNyc8tXUa3UQ-uHhK42nVhS_97MIl_Bouw0",
+        "grade": null,
+        "activities_and_societies": null
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 1998
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 1,
+          "year": 2001
+        },
+        "field_of_study": "Physics",
+        "degree_name": "BSc",
+        "school": "Hindu College, University of Delhi",
+        "school_linkedin_profile_url": null,
+        "school_facebook_profile_url": null,
+        "description": null,
+        "logo_url": "https://media.licdn.com/dms/image/C4D0BAQEFBRt0eM_tjA/company-logo_400_400/0/1630507541099?e=1720051200&v=beta&t=BTb9uOqKFmlxovnJovrl6CeUIHBvcEJHFNqWLQu4JLM",
+        "grade": null,
+        "activities_and_societies": "Debating & Public Speaking\nPhotography"
+      },
+      {
+        "starts_at": {
+          "day": 1,
+          "month": 1,
+          "year": 1986
+        },
+        "ends_at": {
+          "day": 31,
+          "month": 1,
+          "year": 1998
+        },
+        "field_of_study": "Science",
+        "degree_name": "High School",
+        "school": "Don Bosco High School - India",
+        "school_linkedin_profile_url": null,
+        "school_facebook_profile_url": null,
+        "description": null,
+        "logo_url": "https://media.licdn.com/dms/image/C4E0BAQF04nJmE-492A/company-logo_400_400/0/1630574763126/don_bosco_high_school___india_logo?e=1720051200&v=beta&t=0B74T8zRV6tHI6GP-7yTDL6CbdKv8hQj_QIYCgB5KWo",
+        "grade": null,
+        "activities_and_societies": "Debating & Public Speaking"
+      }
+    ],
+    "accomplishment_publications": [
+      {
+        "name": "The Indian Industrial Sector - A Cleaner Future",
+        "publisher": "Stanford University (Program for Energy and Sustainable Development)",
+        "published_on": {
+          "day": 1,
+          "month": 1,
+          "year": 2007
+        },
+        "description": null,
+        "url": "http://iis-db.stanford.edu/pubs/21997/WP_68%2C_AT_Kearney%2C_Industrial.pdf"
+      }
+    ],
+    "accomplishment_honors_awards": [
+      {
+        "title": "LinkedIn Spotlight 2019",
+        "issuer": "LinkedIn India",
+        "issued_on": {
+          "day": 1,
+          "month": 10,
+          "year": 2019
+        },
+        "description": "Recognized as part of LinkedIn Spotlight - most viewed & engaging professionals on the platform"
+      },
+      {
+        "title": "Linkedin India Top Voice 2018",
+        "issuer": "LinkedIn",
+        "issued_on": {
+          "day": 1,
+          "month": 11,
+          "year": 2018
+        },
+        "description": "Part of LinkedIn India's Top Voice 2018 List"
+      },
+      {
+        "title": "LinkedIn India Power Profile List 2018",
+        "issuer": "LinkedIn ",
+        "issued_on": {
+          "day": 1,
+          "month": 8,
+          "year": 2018
+        },
+        "description": "Part of LinkedIn India's Power Profile List 2018"
+      },
+      {
+        "title": "Social Media Entrepreneur of the Year 2017",
+        "issuer": "CMOAsia",
+        "issued_on": {
+          "day": 1,
+          "month": 7,
+          "year": 2017
+        },
+        "description": "Awarded Social Media Entrepreneur of the Year 2017 by CMOAsia, in July 20017"
+      },
+      {
+        "title": "FORTUNE India 40 Under 40 List",
+        "issuer": "FORTUNE Magazine India",
+        "issued_on": {
+          "day": 1,
+          "month": 3,
+          "year": 2015
+        },
+        "description": "Listed in Fortune India's Annual compilation of its famous 40 UNDER 40 List"
+      },
+      {
+        "title": "FORTUNE India 40 Under 40 List",
+        "issuer": "Fortune Magazine (India)",
+        "issued_on": {
+          "day": 1,
+          "month": 3,
+          "year": 2014
+        },
+        "description": "Listed in Fortune India's 1st compilation of its famous 40 UNDER 40 List"
+      },
+      {
+        "title": "India's Most Promising Entrepreneur Award (2013)",
+        "issuer": "Enterprise Asia",
+        "issued_on": {
+          "day": 1,
+          "month": 3,
+          "year": 2014
+        },
+        "description": "Awarded India's Most Promising Entrepreneur Award for the year 2013, by Enterprise Asia (based in Malaysia)\nhttp://enterpriseasia.org/apea/in/past-winners.php"
+      },
+      {
+        "title": "India's Top 25 Executives below 40 years (2013)",
+        "issuer": "Business Today Magazine",
+        "issued_on": {
+          "day": 1,
+          "month": 3,
+          "year": 2014
+        },
+        "description": "Named as one of the Top 25 Executives below 40 years, in India for the year 2013\n\nhttp://businesstoday.intoday.in/story/hottest-young-executive-groupon-ankur-warikoo/1/203645.html"
+      },
+      {
+        "title": "ISB Young Leader Award 2005-06",
+        "issuer": "Indian School of Business",
+        "issued_on": {
+          "day": 1,
+          "month": 3,
+          "year": 2006
+        },
+        "description": "Awarded the ISB Young Leader Award for 2005-06. \n4 students in a batch of 350+ were recongized for the same award. "
+      }
+    ],
+    "connections": 500,
+    "similarly_named_profiles": [
+      {
+        "name": "Ankur Warikoo",
+        "link": "https://in.linkedin.com/in/ankur-warikoo-20b6a4170",
+        "summary": "--",
+        "location": "India"
+      },
+      {
+        "name": "Ankur Warikoo Lite",
+        "link": "https://in.linkedin.com/in/ankur-warikoo-lite-7b9588229",
+        "summary": "Student at The London School of Economics and Political Science (LSE)",
+        "location": "Alwar"
+      }
+    ]
+  }
+}

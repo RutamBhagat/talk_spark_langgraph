@@ -5,8 +5,11 @@ from app.graph.state import GraphState
 
 def generate(state: GraphState) -> Dict[str, Any]:
     print("Generating answer...")
-    question = state.question
-    documents = state.documents
-    print("Length of Documents: ", len(documents))
-    generation = generation_chain.invoke({"context": documents, "question": question})
-    return {"documents": documents, "generation": generation, "question": question}
+    person = state.person
+    scrapped_data = state.scrapped_data
+    bio = generation_chain.invoke({"person": person, "question": person})
+    return {
+        "scrapped_data": scrapped_data,
+        "bio": bio,
+        "question": person,
+    }

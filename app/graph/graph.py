@@ -2,8 +2,8 @@ from dotenv import load_dotenv, find_dotenv
 from langgraph.graph import END, StateGraph
 
 from app.graph.state import GraphState
-from app.graph.consts import WEB_SEARCH, GENERATE
 from app.graph.nodes import generate, web_search
+from app.graph.consts import WEB_SEARCH, GENERATE
 
 _ = load_dotenv(find_dotenv())
 

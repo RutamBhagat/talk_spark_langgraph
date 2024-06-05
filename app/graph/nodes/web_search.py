@@ -11,22 +11,6 @@ from app.graph.utils.scrape_linkedin_profile import scrape_linkedin_profile
 web_search_tool = TavilySearchResults(max_results=3)
 
 
-def web_search(state: GraphState) -> Dict[str, Any]:
-    print("Searching the web for linkedin url...")
-    person = state.person
-    tavily_results = web_search_tool.invoke(
-        {"query": f"provide {person} LinkedIn URL only"}
-    )
-
-    linkedin_url = find_linkedin_url(tavily_results)
-
-    if linkedin_url != "no_url_found":
-        documents = scrape_linkedin_profile(linkedin_url)
-        return {"linkedin_url": linkedin_url, "documents": documents}
-    else:
-        return {"linkedin_url": linkedin_url}
-
-
 def find_linkedin_url(tavily_results):
     linkedin_url_pattern = r"https://www.linkedin.com/in/[\w-]+/?$"
 
@@ -39,16 +23,33 @@ def find_linkedin_url(tavily_results):
     return "no_url_found"
 
 
+def web_search(state: GraphState) -> Dict[str, Any]:
+    print("Searching the web for linkedin url...")
+    person = state.person
+    tavily_results = web_search_tool.invoke(
+        {"query": f"provide {person} LinkedIn URL only"}
+    )
+
+    linkedin_url = find_linkedin_url(tavily_results)
+
+    if linkedin_url != "no_url_found":
+        scrapped_data = scrape_linkedin_profile(linkedin_url)
+        return {"linkedin_url": linkedin_url, "scrapped_data": scrapped_data}
+    else:
+        return {"linkedin_url": linkedin_url}
+
+
 if __name__ == "__main__":
 
     class AgentState:
+
         def __init__(
-            self, person="", documents=[], generation="", linkedin_url="", bio={}
+            self, person="", scrapped_data=[], generation="", linkedin_url="", bio={}
         ):
             self.person = person
             self.generation = generation
             self.bio = bio
-            self.documents = documents
+            self.scrapped_data = scrapped_data
             self.linkedin_url = linkedin_url
 
     state = AgentState(person="Andrew NG")
