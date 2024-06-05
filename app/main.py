@@ -12,10 +12,10 @@ from app.graph.graph import c_rag_app
 
 async def get_response(person):
     start_time = time.time()
-    bio = await c_rag_app.ainvoke(input={"person": person})
+    res = await c_rag_app.ainvoke(input={"person": person})
     end_time = time.time()
     time_taken = end_time - start_time
-    return person, bio, time_taken
+    return person, res, time_taken
 
 
 async def main():
@@ -29,10 +29,12 @@ async def main():
     results = await asyncio.gather(*coroutines)
 
     with open(os.path.join(os.environ["PYTHONPATH"], "results.md"), "w") as f:
-        for question, response, time_taken in results:
-            f.write(f"Question: {question}\n")
+        for people, res, time_taken in results:
+            f.write(f"People: {people}\n")
             f.write(f"Time Taken: {time_taken:.2f} seconds\n")
-            f.write(f"Response: {response['generation']}\n\n\n\n")
+            print("Type of response:", type(res))
+            # f.write(f"Bio: {res}\n\n\n\n")
+            f.write(f"Bio: {res['bio']}\n\n\n\n")
 
 
 if __name__ == "__main__":

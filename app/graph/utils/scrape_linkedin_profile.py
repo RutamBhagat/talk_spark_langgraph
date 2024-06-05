@@ -8,8 +8,6 @@ def scrape_linkedin_profile(linkedin_url: str):
     Scrape information from LinkedIn profiles,
     Manually scrape the information from LinkedIn profile
     """
-    print("Linkedin URL: ", linkedin_url)
-
     # Check if user exists in the database
     user = get_user_by_linkedin_url(linkedin_url)
     if user:

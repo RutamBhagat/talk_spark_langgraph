@@ -9,7 +9,7 @@ load_dotenv(find_dotenv())
 from app.graph.state import GraphState
 from app.graph.utils.scrape_linkedin_profile import scrape_linkedin_profile
 
-web_search_tool = TavilySearchResults(max_results=3)
+web_search_tool = TavilySearchResults(max_results=5)
 
 
 def find_linkedin_url(tavily_results):
@@ -33,11 +33,10 @@ def web_search(state: GraphState) -> Dict[str, Any]:
 
     linkedin_url = find_linkedin_url(tavily_results)
 
-    if linkedin_url != "no_url_found":
-        scrapped_data = scrape_linkedin_profile(linkedin_url)
-        return {"linkedin_url": linkedin_url, "scrapped_data": scrapped_data}
-    else:
+    if linkedin_url == "no_url_found":
         return {"linkedin_url": linkedin_url}
+    scrapped_data = scrape_linkedin_profile(linkedin_url)
+    return {"linkedin_url": linkedin_url, "scrapped_data": scrapped_data}
 
 
 if __name__ == "__main__":
