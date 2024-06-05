@@ -1,5 +1,5 @@
 {
-  "https://www.linkedin.com/in/andrewyng": {
+  "https://www.linkedin.com/in/andrewyng/": {
     "public_identifier": "andrewyng",
     "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/andrewyng/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240425%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240425T195135Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=ada9bab03d7e3145234427e48f709886963361b9b30df2ac47b85e0a4685954a",
     "first_name": "Andrew",
@@ -202,7 +202,7 @@
     ],
     "connections": 1614
   },
-  "https://www.linkedin.com/in/leonnoel": {
+  "https://www.linkedin.com/in/leonnoel/": {
     "public_identifier": "leonnoel",
     "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/leonnoel/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240425%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240425T195233Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=9bf75fd160a57ce8aeeca66e1c51a72908d2bea691a5fa4e6773cfbd415abfe9",
     "background_cover_image_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/leonnoel/cover?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240425%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240425T195233Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8e94b66cad0b16aa8661d645adaa27aefc7c7f7c1058aa1112384b44209eda87",
@@ -346,7 +346,7 @@
       }
     ]
   },
-  "https://in.linkedin.com/in/warikoo": {
+  "https://www.linkedin.com/in/warikoo/": {
     "public_identifier": "warikoo",
     "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/warikoo/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240425%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240425T195310Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b27f1ff5bf24e6097781366d1a8ddaf32ba313a0b3cdb3f0de7e77812e659e8f",
     "background_cover_image_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/warikoo/cover?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240425%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240425T195310Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=315011a7dfdcebc095b1826076468d0c05f1588d3b610620cf9dfb77018eb551",

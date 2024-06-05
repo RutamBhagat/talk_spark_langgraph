@@ -1,15 +1,18 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from langserve import add_routes
-
 from dotenv import load_dotenv, find_dotenv
 
 _ = load_dotenv(find_dotenv())
 
+from app.db.database import engine
+from app.models import models
 from app.graph.graph import c_rag_app
 
 
 app = FastAPI()
+
+models.Base.metadata.create_all(bind=engine)
 
 
 @app.get("/")
