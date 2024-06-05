@@ -4,8 +4,7 @@ from app.graph.chains.generation import generation_chain
 from app.graph.state import GraphState
 
 
-def generate(state: GraphState) -> Dict[str, Any]:
-    print("Generating answer...")
+async def generate(state: GraphState) -> Dict[str, Any]:
     person = state.person
     linkedin_url = state.linkedin_url
     scrapped_data = state.scrapped_data
@@ -18,7 +17,10 @@ def generate(state: GraphState) -> Dict[str, Any]:
             "scrapped_data": scrapped_data,
         }
 
-    bio = generation_chain.invoke({"person": person, "scrapped_data": scrapped_data})
+    print("Generating answer...")
+    bio = await generation_chain.ainvoke(
+        {"person": person, "scrapped_data": scrapped_data}
+    )  # this is an async function
     print("Type of bio: ", type(bio))
     bio = bio.dict()
     update_user_bio(linkedin_url=linkedin_url, bio=bio)

@@ -13,6 +13,7 @@ def scrape_linkedin_profile(linkedin_url: str):
     if user:
         return user.scrapped_data
 
+    print("Scraping LinkedIn profile...")
     # If user does not exist, fetch the data
     api_endpoint = "https://nubela.co/proxycurl/api/v2/linkedin"
     header_dic = {"Authorization": f"Bearer {os.getenv('PROXYCURL_API_KEY')}"}

@@ -24,10 +24,12 @@ def find_linkedin_url(tavily_results):
     return "no_url_found"
 
 
-def web_search(state: GraphState) -> Dict[str, Any]:
+async def web_search(state: GraphState) -> Dict[str, Any]:
     print("Searching the web for linkedin url...")
     person = state.person
-    tavily_results = web_search_tool.invoke({"query": f"{person} LinkedIn profile"})
+    tavily_results = await web_search_tool.ainvoke(
+        {"query": f"{person} LinkedIn profile"}
+    )  # This is an async function
 
     linkedin_url = find_linkedin_url(tavily_results)
 

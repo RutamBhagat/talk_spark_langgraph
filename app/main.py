@@ -33,7 +33,6 @@ async def main():
             f.write(f"People: {people}\n")
             f.write(f"Time Taken: {time_taken:.2f} seconds\n")
             print("Type of response:", type(res))
-            # f.write(f"Bio: {res}\n\n\n\n")
             f.write(f"Bio: {res['bio']}\n\n\n\n")
 
 
