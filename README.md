@@ -1,81 +1,50 @@
-# C_RAG
+# TalkSpark: AI-Powered Conversation Starter
 
-## Installation
+TalkSpark is a cool app that uses OpenAI to give you great conversation starters. Just type in someone's name, and TalkSpark will find their social media profiles online. It looks at their info and interests to make custom icebreakers for you. This helps you start enjoyable chats with new people.
 
-Install the LangChain CLI if you haven't yet
+**Link to project:** [https://talk-spark-frontend.vercel.app/](https://talk-spark-frontend.vercel.app/)
 
-```bash
-pip install -U langchain-cli
-```
+**Frontend Repo:** https://github.com/RutamBhagat/talk_spark_frontend
 
-## Adding packages
+**Backend Repo:** https://github.com/RutamBhagat/talk_spark_langgraph
 
-```bash
-# adding packages from 
-# https://github.com/langchain-ai/langchain/tree/master/templates
-langchain app add $PROJECT_NAME
+https://github.com/RutamBhagat/talk_spark_frontend/assets/72187009/dfc43717-61d5-4391-8d1c-89f291d780c7
 
-# adding custom GitHub repo packages
-langchain app add --repo $OWNER/$REPO
-# or with whole git string (supports other git providers):
-# langchain app add git+https://github.com/hwchase17/chain-of-verification
+## How It's Made
 
-# with a custom api mount point (defaults to `/{package_name}`)
-langchain app add $PROJECT_NAME --api_path=/my/custom/path/rag
-```
+**Tech used:** LangChain, LCEL, LangGraph, Next.js, FASTAPI, Python, TavilyAPI, ProxyCurl
 
-Note: you remove packages by their api path
+TalkSpark uses LangGraph, which is framework used to build Agentic apps with LLMs. It combines LangGraph Nodes, chains, custom tools (Tavily) for web search, and structured output parsers to connect to peoples LinkedIn. This lets it pull public profile data from Linkedin. TalkSpark uses TavilyAPI, ProxyCurl helps TalkSpark grabs info from websites by web scraping. The LangGraph agents then process this data to make personalized profiles, fun facts, and custom icebreaker questions.
 
-```bash
-langchain app remove my/custom/path/rag
-```
+TalkSpark's code is built in sections and is completely modularized, so you can add more data sources like twitter and facebook easily. Also can you switch language models. The front-end uses Next.js to make it simple to use.
 
-## Setup LangSmith (Optional)
-LangSmith will help us trace, monitor and debug LangChain applications. 
-You can sign up for LangSmith [here](https://smith.langchain.com/). 
-If you don't have access, you can skip this section
+## Optimizations
 
+To ensure optimal performance and scalability, TalkSpark employs several optimization techniques:
 
-```shell
-export LANGCHAIN_TRACING_V2=true
-export LANGCHAIN_API_KEY=<your-api-key>
-export LANGCHAIN_PROJECT=<your-project>  # if not specified, defaults to "default"
-```
+1. **Caching**: Frequently accessed social media profiles and web pages are cached to reduce redundant requests and improve response times.
+2. **Asynchronous Processing**: Web scraping and data processing tasks are executed asynchronously, enabling TalkSpark to handle multiple requests concurrently without sacrificing responsiveness.
 
-## Launch LangServe
+## Lessons Learned
 
-```bash
-langchain serve
-```
+Building TalkSpark taught me a ton about using LLMs, Langchain, LCEL, LangGraph and web scraping tools in really cool ways, like:
 
-## Running in Docker
+- Combining multiple data sources and LLMs into one smooth app.
+- Making custom agents and tools for LangGraph to do exactly what I needed.
+- Optimizing web scraping to make it fast and reliable.
+- Adding async processing and caching to make things speedy.
 
-This project folder includes a Dockerfile that allows you to easily build and host your LangServe app.
+This project made me really excited about using Langgraph to solve practical problems and help people connect better.
 
-### Building the Image
+## Examples
 
-To build the image, you simply:
+Here are a few examples showcasing TalkSpark's capabilities:
 
-```shell
-docker build . -t my-langserve-app
-```
+**Andrew NG:**
+![Screenshot 2024-04-27 093353](https://github.com/RutamBhagat/talk_spark_frontend/assets/72187009/b86571e3-f384-470a-b38b-7d1f7bdb2ed0)
 
-If you tag your image with something other than `my-langserve-app`,
-note it for use in the next step.
+**Leon Noel:**
+![Screenshot 2024-04-27 093443](https://github.com/RutamBhagat/talk_spark_frontend/assets/72187009/85e1fc08-9310-4aa4-891f-23eda8d72f60)
 
-### Running the Image Locally
-
-To run the image, you'll need to include any environment variables
-necessary for your application.
-
-In the below example, we inject the `OPENAI_API_KEY` environment
-variable with the value set in my local environment
-(`$OPENAI_API_KEY`)
-
-We also expose port 8080 with the `-p 8080:8080` option.
-
-```shell
-docker run -e OPENAI_API_KEY=$OPENAI_API_KEY -p 8080:8080 my-langserve-app
-```
-# C_RAG
-# talk_spark_langgraph
+**Ankur Warikoo:**
+![Screenshot 2024-04-27 093532](https://github.com/RutamBhagat/talk_spark_frontend/assets/72187009/dd5c1784-1951-418e-a956-f084589a0334)
