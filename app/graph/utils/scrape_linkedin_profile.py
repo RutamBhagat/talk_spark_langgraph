@@ -1,5 +1,6 @@
 import os
 import requests
+from app.db.access_layer.linkedin_bio import get_user_by_linkedin_url, save_new_user
 
 
 def scrape_linkedin_profile(linkedin_url: str):
@@ -9,6 +10,12 @@ def scrape_linkedin_profile(linkedin_url: str):
     """
     print("Linkedin URL: ", linkedin_url)
 
+    # Check if user exists in the database
+    user = get_user_by_linkedin_url(linkedin_url)
+    if user:
+        return user.scrapped_data
+
+    # If user does not exist, fetch the data
     api_endpoint = "https://nubela.co/proxycurl/api/v2/linkedin"
     header_dic = {"Authorization": f"Bearer {os.getenv('PROXYCURL_API_KEY')}"}
 
@@ -33,4 +40,7 @@ def scrape_linkedin_profile(linkedin_url: str):
         for group_dict in data.get("groups"):
             group_dict.pop("profile_pic_url")
 
-    return data
+    # Save the new user
+    user = save_new_user(linkedin_url=linkedin_url, scrapped_data=data)
+
+    return user.scrapped_data
