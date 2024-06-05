@@ -13,8 +13,8 @@ web_search_tool = TavilySearchResults(max_results=5)
 
 
 def find_linkedin_url(tavily_results):
-    linkedin_url_pattern = r"https://www.linkedin.com/in/[\w-]+/?$"
-
+    # linkedin_url_pattern = r"https://www.linkedin.com/in/[\w-]+/?$"
+    linkedin_url_pattern = r"https://(www\.|in\.)linkedin.com/in/[\w-]+/?$"
     for result in tavily_results:
         if isinstance(result, dict) and "url" in result:
             url = result["url"]
@@ -27,9 +27,7 @@ def find_linkedin_url(tavily_results):
 def web_search(state: GraphState) -> Dict[str, Any]:
     print("Searching the web for linkedin url...")
     person = state.person
-    tavily_results = web_search_tool.invoke(
-        {"query": f"provide {person} LinkedIn URL only"}
-    )
+    tavily_results = web_search_tool.invoke({"query": f"{person} LinkedIn profile"})
 
     linkedin_url = find_linkedin_url(tavily_results)
 
