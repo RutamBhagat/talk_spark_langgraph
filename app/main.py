@@ -7,22 +7,22 @@ from app.graph.graph import c_rag_app
 load_dotenv(find_dotenv())
 
 
-async def get_response(message):
+async def get_response(person):
     start_time = time.time()
-    res = await c_rag_app.ainvoke(input={"question": message})
+    bio = await c_rag_app.ainvoke(input={"person": person})
     end_time = time.time()
     time_taken = end_time - start_time
-    return message, res, time_taken
+    return person, bio, time_taken
 
 
 async def main():
     print("Hello Talk Spark with LangGraph")
-    messages = [
+    people = [
         "Andrew NG",
         "Leon Noel?",
         "Ankur Warikoo",
     ]
-    coroutines = [get_response(message) for message in messages]
+    coroutines = [get_response(person) for person in people]
     results = await asyncio.gather(*coroutines)
 
     with open(os.path.join(os.environ["PYTHONPATH"], "results.md"), "w") as f:
