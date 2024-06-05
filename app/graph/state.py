@@ -2,6 +2,8 @@ from typing import Any, Dict, Optional
 
 from langchain_core.pydantic_v1 import BaseModel, Field
 
+from app.graph.chains.generation import BioGeneration
+
 
 class GraphState(BaseModel):
     """Represents the state of our graph.
@@ -14,6 +16,6 @@ class GraphState(BaseModel):
     """
 
     person: str = Field(..., description="The person to generate a bio for")
-    bio: Optional[Dict[str, str]] = None
+    bio: Optional[BioGeneration] = None
     scrapped_data: Optional[Dict[str, Any]] = None
     linkedin_url: Optional[str] = ""

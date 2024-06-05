@@ -23,7 +23,7 @@ async def redirect_root_to_docs():
 
 
 @app.post("/talk_spark")
-async def code_wizard(request: GraphState):
+async def talk_spark(request: GraphState):
     return await c_rag_app.ainvoke(request.dict())
 
 
