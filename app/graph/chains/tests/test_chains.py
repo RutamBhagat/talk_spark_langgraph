@@ -1,6 +1,6 @@
 from pprint import pprint
-from dotenv import load_dotenv, find_dotenv
 
+from dotenv import load_dotenv, find_dotenv
 
 _ = load_dotenv(find_dotenv())  # Do not move this below other app. imports
 

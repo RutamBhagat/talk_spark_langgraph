@@ -1,10 +1,13 @@
 import os
 import asyncio
 import time
+
 from dotenv import load_dotenv, find_dotenv
-from app.graph.graph import c_rag_app
 
 load_dotenv(find_dotenv())
+
+
+from app.graph.graph import c_rag_app
 
 
 async def get_response(person):

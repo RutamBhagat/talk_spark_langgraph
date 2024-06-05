@@ -1,10 +1,11 @@
 import re
 from typing import Any, Dict
-from dotenv import load_dotenv, find_dotenv
 from langchain_community.tools.tavily_search.tool import TavilySearchResults
 
+from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
+
 from app.graph.state import GraphState
 from app.graph.utils.scrape_linkedin_profile import scrape_linkedin_profile
 
