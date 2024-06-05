@@ -3,8 +3,10 @@ from typing import Any, Dict
 from dotenv import load_dotenv, find_dotenv
 from langchain_community.tools.tavily_search.tool import TavilySearchResults
 
+
 load_dotenv(find_dotenv())
 from app.graph.state import GraphState
+from app.graph.utils.scrape_linkedin_profile import scrape_linkedin_profile
 
 web_search_tool = TavilySearchResults(max_results=3)
 
@@ -18,7 +20,11 @@ def web_search(state: GraphState) -> Dict[str, Any]:
 
     linkedin_url = find_linkedin_url(tavily_results)
 
-    return {"linkedin_url": linkedin_url}
+    if linkedin_url != "no_url_found":
+        documents = scrape_linkedin_profile(linkedin_url)
+        return {"linkedin_url": linkedin_url, "documents": documents}
+    else:
+        return {"linkedin_url": linkedin_url}
 
 
 def find_linkedin_url(tavily_results):
