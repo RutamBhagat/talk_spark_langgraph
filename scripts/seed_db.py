@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from dotenv import load_dotenv, find_dotenv
 
 _ = load_dotenv(find_dotenv())
-from app.db.access_layer.linkedin_bio import save_new_user
+from app.db.controllers.linkedin_bio import save_new_user
 from app.db.database import get_db
 from app.models import models
 from app.db.database import engine

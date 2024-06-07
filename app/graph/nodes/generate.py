@@ -1,5 +1,5 @@
 from typing import Any, Dict
-from app.db.access_layer.linkedin_bio import get_user_by_linkedin_url, update_user_bio
+from app.db.controllers.linkedin_bio import get_user_by_linkedin_url, update_user_bio
 from app.graph.chains.generation import generation_chain
 from app.graph.state import GraphState
 
