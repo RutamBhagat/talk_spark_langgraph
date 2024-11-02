@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import structlog
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from app.db.controllers.linkedin_bio import get_user_by_linkedin_url, update_user_bio
+from app.db.controllers.bio import get_user_by_linkedin_url, update_user_bio
 from app.graph.chains.generation import generation_chain
 from app.graph.state import GraphState
 
@@ -119,7 +119,7 @@ class BioGenerator:
         self.logger.info(
             "processing_bio_request",
             person=state.person,
-            linkedin_url=state.linkedin_url,
+            urls=state.urls,
         )
 
         # Check cache first

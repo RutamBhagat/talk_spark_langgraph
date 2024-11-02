@@ -1,5 +1,5 @@
 import requests
-from app.db.controllers.linkedin_bio import get_user_by_url, save_new_user
+from app.db.controllers.bio import get_user_by_url, save_new_user
 
 
 def scrape_profile(profile_url: str) -> str:

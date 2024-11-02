@@ -61,6 +61,8 @@ dependencies = [
     "pytest-xdist>=3.6.1",
     "python-dotenv>=1.0.1",
     "asyncio>=3.4.3",
+    "structlog>=24.4.0",
+    "sqlmodel>=0.0.22",
 ]
 name = "C_RAG"
 version = "0.1.0"

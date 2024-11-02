@@ -5,20 +5,20 @@ from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
 
 from app.graph.state import GraphState
-from app.graph.nodes import generate, web_search
+from app.graph.nodes import generate, process_profiles
 from app.graph.consts import WEB_SEARCH, GENERATE
 
 
 def should_continue(state: GraphState) -> bool:
-    linkedin_url = state.linkedin_url
-    if linkedin_url == "no_url_found":
-        return "no_url_found"
-    return "url_found"
+    urls = state.urls
+    if len(urls) == 0:
+        return "NO_URL_FOUND"
+    return "URL_FOUND"
 
 
 workflow = StateGraph(GraphState)
 
-workflow.add_node(WEB_SEARCH, web_search)
+workflow.add_node(WEB_SEARCH, process_profiles)
 workflow.add_node(GENERATE, generate)
 
 workflow.set_entry_point(WEB_SEARCH)
@@ -26,7 +26,7 @@ workflow.set_entry_point(WEB_SEARCH)
 workflow.add_conditional_edges(
     WEB_SEARCH,
     should_continue,
-    path_map={"no_url_found": END, "url_found": GENERATE},
+    path_map={"NO_URL_FOUND": END, "URL_FOUND": GENERATE},
 )
 workflow.add_edge(GENERATE, END)
 
