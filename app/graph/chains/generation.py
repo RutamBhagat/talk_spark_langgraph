@@ -1,63 +1,92 @@
-from typing import List
+import os
+from typing import List, Optional
+from dataclasses import dataclass
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.runnables import RunnableSequence
 from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Retrieve the OPENAI_MODEL from environment variables
+OPENAI_MODEL = os.getenv("OPENAI_MODEL")
 
 
 class BioGeneration(BaseModel):
-    """Bio generated of the person from linkedin_url and scrapped data"""
+    """Structured biography generated from LinkedIn profile data"""
 
-    summary: str = Field(description="Summary of the person")
+    summary: str = Field(
+        description="Concise professional summary highlighting key achievements"
+    )
     interesting_facts: List[str] = Field(
-        description="Two interesting facts about the person"
+        description="Two unique facts about the person", max_items=2
     )
-    topics_of_interest: str = Field(description="Topic that may interest the person")
+    topics_of_interest: str = Field(
+        description="Suggested conversation topic based on profile"
+    )
     ice_breakers: List[str] = Field(
-        description="Two creative ice breakers to start a conversation with the person"
+        description="Two relevant conversation starters", max_items=2
     )
 
 
-llm = ChatOpenAI(temperature=0)
+@dataclass
+class BioGenerationConfig:
+    """Configuration for bio generation"""
 
-structured_llm_response = llm.with_structured_output(BioGeneration)
+    temperature: float = 0.0
+    model_name: str = OPENAI_MODEL
+    max_tokens: Optional[int] = None
 
-system = """You are a professional bio generator. Your task is to create a comprehensive and engaging bio for a person based on the data provided from their LinkedIn profile. The bio should be professional, yet personal, and should highlight the person's skills, experiences, and interests.
 
-When generating the bio, consider the following:
+class BioGenerationChain:
+    """Chain for generating structured biographies from LinkedIn data"""
 
-1. Summary: Write a concise summary that highlights the person's professional background, current role, and key responsibilities.
+    def __init__(self, config: Optional[BioGenerationConfig] = None):
+        """
+        Initialize the bio generation chain with optional configuration.
 
-2. Interesting Facts: Identify two interesting facts about the person that are not already mentioned in their LinkedIn profile. These facts should be relevant and engaging.
+        Args:
+            config: Optional configuration for the generation process
+        """
+        self.config = config or BioGenerationConfig()
+        self.llm = self._setup_llm()
+        self.chain = self._build_chain()
 
-3. Topics of Interest: Based on the person's LinkedIn profile, suggest a topic that may interest them. This could be a professional interest, a hobby, or a current trend.
+    def _setup_llm(self) -> ChatOpenAI:
+        """Configure the language model with structured output"""
+        llm = ChatOpenAI(
+            temperature=self.config.temperature,
+            model_name=self.config.model_name,
+            max_tokens=self.config.max_tokens,
+        )
+        return llm.with_structured_output(BioGeneration)
 
-4. Ice Breakers: Generate two creative ice breakers that can be used to start a conversation with the person. These ice breakers should be relevant to the person's interests or experiences.
+    def _build_chain(self) -> RunnableSequence:
+        """Build the generation chain with optimized prompt"""
+        # Optimized system prompt that maintains structure but reduces token usage
+        system = """Professional bio generator. Create engaging LinkedIn bio from profile data.
+                    Generate:
+                    1. Summary: Current role, key achievements
+                    2. Facts: 2 unique professional insights
+                    3. Interest: Key topic for discussion
+                    4. Ice-breakers: 2 relevant conversation starters
 
-Remember to:
+                    Use profile context: {scrapped_data}"""
 
-- Ensure the bio is professional and appropriate for a LinkedIn profile.
-- Avoid using overly formal language.
-- Make sure the bio is coherent and flows well.
-- Ensure the interesting facts, topics of interest, and ice breakers are relevant and appropriate.
-- If there is no data available for a particular section, make a reasonable assumption or suggest a general topic.
-- If the data provided is insufficient or unclear, make a note of this in the corresponding section and suggest additional information that could be used to improve the bio.
+        prompt = ChatPromptTemplate.from_messages(
+            [("system", system), ("human", "Profile data:\n{scrapped_data}")]
+        )
 
-Here is the data provided:
+        return prompt | self.llm
 
-{scrapped_data}
+    @property
+    def generation_chain(self) -> RunnableSequence:
+        """Get the configured generation chain"""
+        return self.chain
 
-Now, please generate the bio based on this data.
-"""
 
-generation_prompt = ChatPromptTemplate.from_messages(
-    [
-        ("system", system),
-        (
-            "human",
-            "List of scrapped_data: \n\n {scrapped_data}",
-        ),
-    ]
-)
-
-generation_chain: RunnableSequence = generation_prompt | structured_llm_response
+# Initialize the optimized chain with default config
+bio_generator = BioGenerationChain()
+generation_chain: RunnableSequence = bio_generator.generation_chain
