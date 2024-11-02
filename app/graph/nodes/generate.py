@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import structlog
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from app.db.controllers.bio import get_user_by_linkedin_url, update_user_bio
+from app.db.controllers.bio import get_user_by_profile_url, update_user_bio
 from app.graph.chains.generation import generation_chain
 from app.graph.state import GraphState
 
@@ -72,7 +72,7 @@ class BioGenerator:
             Optional[Dict[str, Any]]: Cached biography if exists, None otherwise
         """
         try:
-            user = get_user_by_linkedin_url(linkedin_url)
+            user = get_user_by_profile_url(linkedin_url)
             return user.bio if user and user.bio else None
         except Exception as e:
             self.logger.error(

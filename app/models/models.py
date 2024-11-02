@@ -1,6 +1,6 @@
 from typing import List, Optional, Dict, Any
 from sqlmodel import SQLModel, Field, JSON
-from langchain_core.pydantic_v1 import BaseModel
+from pydantic import BaseModel
 
 
 class BioGeneration(BaseModel):

@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional, TypedDict
+from typing import Any, Dict, List, Optional, TypedDict
 import re
 from langchain_community.tools import TavilySearchResults
 from app.graph.state import GraphState

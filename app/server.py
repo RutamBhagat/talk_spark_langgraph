@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, Request
+from fastapi import FastAPI, APIRouter
 from fastapi.responses import RedirectResponse, JSONResponse, StreamingResponse
 from langserve import add_routes
 from dotenv import load_dotenv, find_dotenv
@@ -6,7 +6,7 @@ from typing import AsyncGenerator
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from langchain_core.messages import AIMessageChunk
-from app.db.database import engine
+from app.db.database import engine, init_db
 from app.models import models
 from app.graph.state import GraphState
 from app.graph.graph import c_rag_app
@@ -21,12 +21,14 @@ api_v1_router = APIRouter(prefix="/api/v1")
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Handle startup and shutdown events for the FastAPI application."""
-    models.Base.metadata.create_all(bind=engine)
+    # Initialize database tables
+    init_db()
     yield
     await engine.dispose()
 
 
 app = FastAPI(lifespan=lifespan)
+
 
 # Middleware configuration
 app.add_middleware(
