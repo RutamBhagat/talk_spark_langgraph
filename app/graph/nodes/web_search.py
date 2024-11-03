@@ -49,7 +49,9 @@ async def search_profile(
     return extract_profile_url(results, platform)
 
 
-async def process_profiles(state: GraphState, max_search_results: int = 1):
+async def process_profiles(
+    state: GraphState, max_search_results: int = 1
+) -> GraphState:
     """Process profiles for a given person and update state"""
     # Search for profiles on Wikipedia
     wikipedia_url = await search_profile(state.person, "wikipedia", max_search_results)
@@ -62,3 +64,8 @@ async def process_profiles(state: GraphState, max_search_results: int = 1):
     if wikipedia_url != "no_url_found":
         wikipedia_data = await scrape_profile(wikipedia_url, person=state.person)
         state.scrapped_data = wikipedia_data
+
+    return {
+        "url": state.url,
+        "scrapped_data": state.scrapped_data,
+    }

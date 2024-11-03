@@ -112,7 +112,7 @@ class BioGenerator:
         try:
             bio = await self._generate_bio(state.person, state.scrapped_data)
             await self._update_bio_cache(state.url, bio)
-            state.bio = bio
+            return state.bio
         except Exception as e:
             self.logger.error(
                 "bio_processing_failed", person=state.person, error=str(e)
@@ -131,4 +131,7 @@ async def generate(state: GraphState):
         Dict[str, Any]: Dictionary containing person info, biography, and scraped data
     """
     bio_generator = BioGenerator()
-    await bio_generator.process_bio(state)
+    response = await bio_generator.process_bio(state)
+    return {
+        "bio": response,
+    }
