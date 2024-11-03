@@ -65,7 +65,7 @@ async def stream_response(request: GraphState) -> AsyncGenerator[str, None]:
 
 @api_v1_router.post("/talk_spark")
 async def talk_spark(request: GraphState) -> JSONResponse:
-    """Handle a synchronous conversation request."""
+    """Handle a asynchronous conversation request."""
     return await c_rag_app.ainvoke(request)
 
 

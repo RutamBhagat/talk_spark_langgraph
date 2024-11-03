@@ -1,37 +1,60 @@
-import asyncio
-import aiohttp
-from typing import Optional
-from functools import partial
-from app.db.controllers.bio import get_user_by_profile_url, save_new_user
+import re
 
 
-async def scrape_profile(profile_url: str, person: str) -> str:
+def scrape_profile(markdown_content: str) -> str:
     """
-    Fetch raw markdown data from a profile (wikipedia.org, etc.) by appending the URL with Jina's fetcher.
-    Uses asyncio for HTTP requests and handles database operations in the event loop.
+    Clean markdown content by removing unnecessary elements while preserving core information.
+
+    Args:
+        markdown_content (str): Raw markdown content
+
+    Returns:
+        str: Cleaned content with unnecessary elements removed
     """
-    # Run database check in the event loop
-    loop = asyncio.get_running_loop()
-    user = await loop.run_in_executor(None, get_user_by_profile_url, profile_url)
+    # Remove HTML tags
+    content = re.sub(r"<[^>]+>", "", markdown_content)
 
-    if user:
-        return user.scrapped_data
+    # Remove markdown links but keep link text
+    content = re.sub(r"\[([^\]]+)\]\([^\)]+\)", r"\1", content)
 
-    print("Fetching profile in markdown format...")
-    request_url = f"https://r.jina.ai/{profile_url}"
+    # Remove reference-style links
+    content = re.sub(r"\[\^?\d+\](?:\[[^\]]*\]|\([^\)]*\))?", "", content)
 
-    # Fetch markdown data asynchronously
-    async with aiohttp.ClientSession() as session:
-        async with session.get(request_url) as response:
-            response.raise_for_status()
-            markdown_data = await response.text()
-
-    # Run database save in the event loop
-    user = await loop.run_in_executor(
-        None,
-        partial(
-            save_new_user, url=profile_url, person=person, scrapped_data=markdown_data
-        ),
+    # Remove URLs
+    content = re.sub(
+        r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+",
+        "",
+        content,
     )
 
-    return user.scrapped_data
+    # Remove markdown tables
+    content = re.sub(r"\|[^\n]*\|", "", content)
+    content = re.sub(r"[-|]+\s*\n", "", content)
+
+    # Remove multiple newlines and whitespace
+    content = re.sub(r"\n\s*\n\s*\n", "\n\n", content)
+
+    # Remove footnotes
+    content = re.sub(r"^\[\^[^\]]*\]:[^\n]*$", "", content, flags=re.MULTILINE)
+
+    # Remove image markdown
+    content = re.sub(r"!\[[^\]]*\]\([^\)]+\)", "", content)
+
+    # Remove emphasis markers but keep the text
+    content = re.sub(r"[*_]{1,2}([^*_]+)[*_]{1,2}", r"\1", content)
+
+    # Remove code blocks
+    content = re.sub(r"```[^`]*```", "", content)
+    content = re.sub(r"`[^`]+`", "", content)
+
+    # Remove heading markers
+    content = re.sub(r"^#+\s*", "", content, flags=re.MULTILINE)
+
+    # Clean up any remaining artifacts
+    content = re.sub(r"\s+", " ", content)  # Collapse multiple spaces
+    content = re.sub(r"\n\s*\n", "\n\n", content)  # Normalize line breaks
+    content = re.sub(r"^\s+|\s+$", "", content, flags=re.MULTILINE)  # Trim lines
+
+    # Final cleanup
+    cleaned_paragraphs = [p.strip() for p in content.split("\n\n") if p.strip()]
+    return "\n\n".join(cleaned_paragraphs)
