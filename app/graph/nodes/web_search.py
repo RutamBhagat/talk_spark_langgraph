@@ -65,7 +65,4 @@ async def process_profiles(
         wikipedia_data = await scrape_profile(wikipedia_url, person=state.person)
         state.scrapped_data = wikipedia_data
 
-    return {
-        "url": state.url,
-        "scrapped_data": state.scrapped_data,
-    }
+    return state
