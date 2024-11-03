@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class BioGeneration(BaseModel):
-    """Structured biography generated from LinkedIn profile data"""
+    """Structured bio generated from LinkedIn profile data"""
 
     summary: str = Field(
         description="Concise professional summary highlighting key achievements"

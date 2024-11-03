@@ -12,25 +12,25 @@ logger = structlog.get_logger()
 
 class BioGenerator:
     """
-    A class to handle biography generation and caching for LinkedIn profiles.
+    A class to handle bio generation and caching for LinkedIn profiles.
     """
 
     def __init__(self):
         """Initialize the BioGenerator with a logger."""
         self.logger = logger.bind(module="bio_generator")
 
-    async def _generate_bio(
+    async def generate_bio(
         self, person: str, scrapped_data: Dict[str, Any]
     ) -> Dict[str, Any]:
         """
-        Generate a biography using the generation chain.
+        Generate a bio using the generation chain.
 
         Args:
             person (str): Name of the person
             scrapped_data (Dict[str, Any]): Scraped LinkedIn data
 
         Returns:
-            Dict[str, Any]: Generated biography
+            Dict[str, Any]: Generated bio
 
         Raises:
             ValueError: If generation fails
@@ -42,55 +42,55 @@ class BioGenerator:
             return bio_response.dict()
         except Exception as e:
             self.logger.error("bio_generation_failed", person=person, error=str(e))
-            raise ValueError(f"Failed to generate biography: {str(e)}")
+            raise ValueError(f"Failed to generate bio: {str(e)}")
 
-    def _get_cached_bio(self, url: str) -> Optional[Dict[str, Any]]:
+    def get_bio_from_db(self, url: str) -> Optional[Dict[str, Any]]:
         """
-        Retrieve cached biography from database.
+        Retrieve bio from database.
 
         Args:
             url (str): LinkedIn profile URL
 
         Returns:
-            Optional[Dict[str, Any]]: Cached biography if exists, None otherwise
+            Optional[Dict[str, Any]]: Returns bio if exists, None otherwise
         """
         try:
             user = get_user_by_profile_url(url)
             return user.bio if user and user.bio else None
         except Exception as e:
-            self.logger.error("cache_retrieval_failed", url=url, error=str(e))
+            self.logger.error("bio_retrieval_from_db_failed", url=url, error=str(e))
             return None
 
     @retry(
         stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10)
     )
-    async def _update_bio_cache(self, url: str, bio: Dict[str, Any]) -> None:
+    async def update_bio(self, url: str, bio: Dict[str, Any]) -> None:
         """
-        Update biography cache in database with retry logic.
+        Update bio in database with retry logic.
 
         Args:
             url (str): LinkedIn profile URL
-            bio (Dict[str, Any]): Biography to cache
+            bio (Dict[str, Any]): bio to update
 
         Raises:
             ValueError: If update fails after retries
         """
         try:
             update_user_bio(url=url, bio=bio)
-            self.logger.info("bio_cache_updated", url=url)
+            self.logger.info("bio_updated", url=url)
         except Exception as e:
-            self.logger.error("cache_update_failed", url=url, error=str(e))
-            raise ValueError(f"Failed to update bio cache: {str(e)}")
+            self.logger.error("bio_update_failed", url=url, error=str(e))
+            raise ValueError(f"Failed to update bio in db: {str(e)}")
 
     async def process_bio(self, state: GraphState):
         """
-        Process biography generation request, using cache when available.
+        Process bio generation request, using bio from db when available.
 
         Args:
             state (GraphState): Current state containing person information
 
         Returns:
-            UserBioData: Generated or cached biographical data
+            UserBioData: Generated or db bio data
 
         Raises:
             ValueError: If processing fails
@@ -101,17 +101,17 @@ class BioGenerator:
             url=state.url,
         )
 
-        # Check cache first
-        cached_bio = self._get_cached_bio(state.url)
-        if cached_bio:
-            self.logger.info("using_cached_bio", person=state.person)
-            state.bio = cached_bio
+        # Check db first
+        bio = self.get_bio_from_db(state.url)
+        if bio:
+            self.logger.info("using_bio_from_db", person=state.person)
+            state.bio = bio
 
         # Generate new bio
         self.logger.info("generating_new_bio", person=state.person)
         try:
-            bio = await self._generate_bio(state.person, state.scrapped_data)
-            await self._update_bio_cache(state.url, bio)
+            bio = await self.generate_bio(state.person, state.scrapped_data)
+            await self.update_bio(state.url, bio)
             state.bio = bio
             return state
         except Exception as e:
@@ -123,13 +123,13 @@ class BioGenerator:
 
 async def generate(state: GraphState):
     """
-    Generate or retrieve biography for a LinkedIn profile.
+    Generate or retrieve bio for a LinkedIn profile.
 
     Args:
         state (GraphState): Current state containing person information
 
     Returns:
-        Dict[str, Any]: Dictionary containing person info, biography, and scraped data
+        Dict[str, Any]: Dictionary containing person info, bio, and scraped data
     """
     bio_generator = BioGenerator()
     return await bio_generator.process_bio(state)
