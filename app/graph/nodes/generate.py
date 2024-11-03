@@ -1,5 +1,4 @@
 from typing import Any, Dict, Optional
-from dataclasses import dataclass
 import structlog
 from tenacity import retry, stop_after_attempt, wait_exponential
 
@@ -9,22 +8,6 @@ from app.graph.state import GraphState
 
 # Configure structured logging
 logger = structlog.get_logger()
-
-
-@dataclass
-class UserBioData:
-    """
-    Data class representing user biographical data.
-
-    Attributes:
-        person (str): Name of the person
-        bio (Dict[str, Any]): Biographical information
-        scrapped_data (Dict[str, Any]): Raw data scraped from LinkedIn
-    """
-
-    person: str
-    bio: Dict[str, Any]
-    scrapped_data: Dict[str, Any]
 
 
 class BioGenerator:
@@ -99,7 +82,7 @@ class BioGenerator:
             self.logger.error("cache_update_failed", url=url, error=str(e))
             raise ValueError(f"Failed to update bio cache: {str(e)}")
 
-    async def process_bio(self, state: GraphState) -> UserBioData:
+    async def process_bio(self, state: GraphState):
         """
         Process biography generation request, using cache when available.
 
@@ -122,19 +105,14 @@ class BioGenerator:
         cached_bio = self._get_cached_bio(state.url)
         if cached_bio:
             self.logger.info("using_cached_bio", person=state.person)
-            return UserBioData(
-                person=state.person, bio=cached_bio, scrapped_data=state.scrapped_data
-            )
+            state.bio = cached_bio
 
         # Generate new bio
         self.logger.info("generating_new_bio", person=state.person)
         try:
             bio = await self._generate_bio(state.person, state.scrapped_data)
             await self._update_bio_cache(state.url, bio)
-
-            return UserBioData(
-                person=state.person, bio=bio, scrapped_data=state.scrapped_data
-            )
+            state.bio = bio
         except Exception as e:
             self.logger.error(
                 "bio_processing_failed", person=state.person, error=str(e)
@@ -142,7 +120,7 @@ class BioGenerator:
             raise
 
 
-async def generate(state: GraphState) -> Dict[str, Any]:
+async def generate(state: GraphState):
     """
     Generate or retrieve biography for a LinkedIn profile.
 
@@ -153,9 +131,4 @@ async def generate(state: GraphState) -> Dict[str, Any]:
         Dict[str, Any]: Dictionary containing person info, biography, and scraped data
     """
     bio_generator = BioGenerator()
-    result = await bio_generator.process_bio(state)
-    return {
-        "person": result.person,
-        "bio": result.bio,
-        "scrapped_data": result.scrapped_data,
-    }
+    await bio_generator.process_bio(state)

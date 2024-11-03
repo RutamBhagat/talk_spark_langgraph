@@ -30,12 +30,12 @@ def save_new_user(url: str, person: str, scrapped_data: Dict[str, Any]) -> DBPro
         return user
 
 
-def update_user_bio(profile_url: str, bio: Dict[str, Any]) -> Optional[DBProfile]:
+def update_user_bio(url: str, bio: Dict[str, Any]) -> Optional[DBProfile]:
     """
     Update the bio of an existing user profile.
     """
     with get_db() as db:
-        user = db.query(DBProfile).filter(DBProfile.url == profile_url).first()
+        user = db.query(DBProfile).filter(DBProfile.url == url).first()
         if user:
             user.bio = bio
             db.commit()

@@ -86,6 +86,18 @@ add_routes(
 )
 
 
+async def hit_async_route():
+    """Send a request to the async route and print responses to the console."""
+    async with httpx.AsyncClient() as client:
+        request_data = {
+            "person": "Andrew NG"
+        }  # Populate this with valid GraphState data
+        response = client.request(
+            "POST", "http://0.0.0.0:8000/api/v1/talk_spark/", json=request_data
+        )
+        print("Streamed response chunk:", response)
+
+
 async def hit_stream_route():
     """Send a request to the streaming route and print responses to the console."""
     async with httpx.AsyncClient() as client:
@@ -107,6 +119,7 @@ if __name__ == "__main__":
         server = uvicorn.run(
             "main:app", host="0.0.0.0", port=8000, reload=True, workers=4
         )
-        await hit_stream_route()
+        # await hit_stream_route()
+        await hit_async_route()
 
     asyncio.run(main())
