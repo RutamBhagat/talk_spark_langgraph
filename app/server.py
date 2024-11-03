@@ -11,6 +11,8 @@ from app.models import models
 from app.graph.state import GraphState
 from app.graph.graph import c_rag_app
 from app.middleware import time_middleware
+import asyncio
+import httpx
 
 load_dotenv(find_dotenv())
 
@@ -86,7 +88,28 @@ add_routes(
     enabled_endpoints=["invoke", "stream", "batch"],
 )
 
+
+async def hit_stream_route():
+    """Send a request to the streaming route and print responses to the console."""
+    async with httpx.AsyncClient() as client:
+        request_data = {
+            "person": "example_person"
+        }  # Populate this with valid GraphState data
+        async with client.stream(
+            "POST", "http://0.0.0.0:8000/api/v1/talk_spark/stream", json=request_data
+        ) as response:
+            async for line in response.aiter_lines():
+                print("Streamed response chunk:", line)
+
+
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True, workers=4)
+    # Start FastAPI server and hit the stream route
+    async def main():
+        server = uvicorn.run(
+            "main:app", host="0.0.0.0", port=8000, reload=True, workers=4
+        )
+        await hit_stream_route()
+
+    asyncio.run(main())
