@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional
+from typing import Optional
 
 from pydantic import BaseModel, Field
 
@@ -18,4 +18,4 @@ class GraphState(BaseModel):
     person: str = Field(..., description="The person to generate a bio for")
     url: str = Field(..., description="Profile URL")
     bio: Optional[BioGeneration] = None
-    scrapped_data: Optional[Dict[str, Any]] = None
+    scrapped_data: Optional[str] = None
