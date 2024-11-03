@@ -4,7 +4,7 @@ from app.db.controllers.bio import get_user_by_profile_url, save_new_user
 
 def scrape_profile(profile_url: str) -> str:
     """
-    Fetch raw markdown data from a profile (LinkedIn, X.com, etc.) by appending the URL with Jina's fetcher.
+    Fetch raw markdown data from a profile (wikipedia.org, etc.) by appending the URL with Jina's fetcher.
     """
     # Check if user exists in the database
     user = get_user_by_profile_url(profile_url)

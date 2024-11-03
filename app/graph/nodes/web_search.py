@@ -24,8 +24,7 @@ class ProfileData(TypedDict):
 def validate_url(url: str, platform: str) -> bool:
     """Validate if a URL matches the expected pattern for a given platform"""
     patterns = {
-        "linkedin": re.compile(r"https://(www\.|in\.)linkedin.com/in/[\w-]+/?$"),
-        "x": re.compile(r"https://x.com/[\w-]+/?$"),
+        "wikipedia": re.compile(r"https://en.wikipedia.org/wiki/[\w-]+/?$"),
     }
     pattern = patterns.get(platform.lower())
     return bool(pattern and pattern.match(url)) if url else False
@@ -45,7 +44,7 @@ async def search_profile(
 ) -> str:
     """Search for a person's profile on a specific platform"""
     web_search_tool = TavilySearchResults(max_results=max_search_results)
-    query = f"site:{platform}.com {person_name}"
+    query = f"site:wikipedia.org {person_name}"
     results = await web_search_tool.ainvoke({"query": query})
     return extract_profile_url(results, platform)
 
@@ -54,27 +53,21 @@ async def process_profiles(
     state: GraphState, max_search_results: int = 1
 ) -> Dict[str, ProfileData]:
     """Process profiles for a given person and update state"""
-    # Search for profiles
-    linkedin_url = await search_profile(state.person, "linkedin", max_search_results)
-    x_url = await search_profile(state.person, "x", max_search_results)
+    # Search for profiles on Wikipedia
+    wikipedia_url = await search_profile(state.person, "wikipedia", max_search_results)
 
     # Update state with URLs
-    state.linkedin_url = linkedin_url
-    state.urls = [url for url in [linkedin_url, x_url] if url != "no_url_found"]
+    state.wikipedia_url = wikipedia_url
+    state.urls = [url for url in [wikipedia_url] if url != "no_url_found"]
 
     # Fetch profile data
-    linkedin_data = None
-    if linkedin_url != "no_url_found":
-        linkedin_data = await scrape_profile(linkedin_url, state.person)
-        state.scrapped_data = linkedin_data
-
-    x_data = None
-    if x_url != "no_url_found":
-        x_data = await scrape_profile(x_url, state.person)
+    wikipedia_data = None
+    if wikipedia_url != "no_url_found":
+        wikipedia_data = await scrape_profile(wikipedia_url, state.person)
+        state.scrapped_data = wikipedia_data
 
     return {
-        "LinkedIn": ProfileData(
-            profile_url=linkedin_url, scrapped_data=linkedin_data, person=state.person
+        "Wikipedia": ProfileData(
+            profile_url=wikipedia_url, scrapped_data=wikipedia_data, person=state.person
         ),
-        "X": ProfileData(profile_url=x_url, scrapped_data=x_data, person=state.person),
     }
