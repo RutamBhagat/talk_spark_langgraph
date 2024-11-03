@@ -120,6 +120,6 @@ if __name__ == "__main__":
             "main:app", host="0.0.0.0", port=8000, reload=True, workers=4
         )
         # await hit_stream_route()
-        await hit_async_route()
+        # await hit_async_route()
 
     asyncio.run(main())
