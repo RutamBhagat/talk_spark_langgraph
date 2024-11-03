@@ -93,7 +93,7 @@ async def hit_stream_route():
     """Send a request to the streaming route and print responses to the console."""
     async with httpx.AsyncClient() as client:
         request_data = {
-            "person": "example_person"
+            "person": "Andrew NG"
         }  # Populate this with valid GraphState data
         async with client.stream(
             "POST", "http://0.0.0.0:8000/api/v1/talk_spark/stream", json=request_data
