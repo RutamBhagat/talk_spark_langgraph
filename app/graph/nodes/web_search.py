@@ -44,7 +44,7 @@ async def search_profile(
 ) -> str:
     """Search for a person's profile on a specific platform"""
     web_search_tool = TavilySearchResults(max_results=max_search_results)
-    query = f"site:wikipedia.org {person_name}"
+    query = f"{person_name}"
     results = await web_search_tool.ainvoke({"query": query})
     return extract_profile_url(results, platform)
 
