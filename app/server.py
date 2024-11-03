@@ -59,11 +59,8 @@ async def redirect_root_to_docs() -> RedirectResponse:
 async def stream_response(request: GraphState) -> AsyncGenerator[str, None]:
     """Generate streamed response from c_rag_app in 'messages' stream mode."""
     async for chunk in c_rag_app.astream(request.dict(), stream_mode="messages"):
-        if isinstance(chunk, AIMessageChunk):
-            if chunk.content:
-                yield chunk.content
-            if chunk.tool_call_chunks:
-                yield str(chunk.tool_calls)
+        if chunk.content:
+            yield chunk.content
 
 
 @api_v1_router.post("/talk_spark")

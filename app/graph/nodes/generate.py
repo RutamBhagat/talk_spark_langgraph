@@ -61,46 +61,42 @@ class BioGenerator:
             self.logger.error("bio_generation_failed", person=person, error=str(e))
             raise ValueError(f"Failed to generate biography: {str(e)}")
 
-    def _get_cached_bio(self, linkedin_url: str) -> Optional[Dict[str, Any]]:
+    def _get_cached_bio(self, url: str) -> Optional[Dict[str, Any]]:
         """
         Retrieve cached biography from database.
 
         Args:
-            linkedin_url (str): LinkedIn profile URL
+            url (str): LinkedIn profile URL
 
         Returns:
             Optional[Dict[str, Any]]: Cached biography if exists, None otherwise
         """
         try:
-            user = get_user_by_profile_url(linkedin_url)
+            user = get_user_by_profile_url(url)
             return user.bio if user and user.bio else None
         except Exception as e:
-            self.logger.error(
-                "cache_retrieval_failed", linkedin_url=linkedin_url, error=str(e)
-            )
+            self.logger.error("cache_retrieval_failed", url=url, error=str(e))
             return None
 
     @retry(
         stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10)
     )
-    async def _update_bio_cache(self, linkedin_url: str, bio: Dict[str, Any]) -> None:
+    async def _update_bio_cache(self, url: str, bio: Dict[str, Any]) -> None:
         """
         Update biography cache in database with retry logic.
 
         Args:
-            linkedin_url (str): LinkedIn profile URL
+            url (str): LinkedIn profile URL
             bio (Dict[str, Any]): Biography to cache
 
         Raises:
             ValueError: If update fails after retries
         """
         try:
-            update_user_bio(linkedin_url=linkedin_url, bio=bio)
-            self.logger.info("bio_cache_updated", linkedin_url=linkedin_url)
+            update_user_bio(url=url, bio=bio)
+            self.logger.info("bio_cache_updated", url=url)
         except Exception as e:
-            self.logger.error(
-                "cache_update_failed", linkedin_url=linkedin_url, error=str(e)
-            )
+            self.logger.error("cache_update_failed", url=url, error=str(e))
             raise ValueError(f"Failed to update bio cache: {str(e)}")
 
     async def process_bio(self, state: GraphState) -> UserBioData:
@@ -123,7 +119,7 @@ class BioGenerator:
         )
 
         # Check cache first
-        cached_bio = self._get_cached_bio(state.linkedin_url)
+        cached_bio = self._get_cached_bio(state.url)
         if cached_bio:
             self.logger.info("using_cached_bio", person=state.person)
             return UserBioData(
@@ -134,7 +130,7 @@ class BioGenerator:
         self.logger.info("generating_new_bio", person=state.person)
         try:
             bio = await self._generate_bio(state.person, state.scrapped_data)
-            await self._update_bio_cache(state.linkedin_url, bio)
+            await self._update_bio_cache(state.url, bio)
 
             return UserBioData(
                 person=state.person, bio=bio, scrapped_data=state.scrapped_data

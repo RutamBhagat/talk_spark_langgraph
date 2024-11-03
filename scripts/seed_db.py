@@ -23,5 +23,5 @@ with open(file_path, "r") as file:
     data = json.load(file)
 
 # Iterate over the data and save each user to the database
-for linkedin_url, user_data in data.items():
-    save_new_user(linkedin_url=linkedin_url, scrapped_data=user_data)
+for url, user_data in data.items():
+    save_new_user(url=url, scrapped_data=user_data)
