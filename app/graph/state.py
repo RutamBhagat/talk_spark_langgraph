@@ -16,6 +16,6 @@ class GraphState(BaseModel):
     """
 
     person: str = Field(..., description="The person to generate a bio for")
-    url: Optional[str] = Field(..., description="Profile URL")
+    url: Optional[str] = Field(None, description="Profile URL")
     bio: Optional[BioGeneration] = None
     scrapped_data: Optional[str] = None
