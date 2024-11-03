@@ -10,8 +10,8 @@ from app.graph.consts import WEB_SEARCH, GENERATE
 
 
 def should_continue(state: GraphState) -> bool:
-    urls = state.urls
-    if len(urls) == 0:
+    url = state.url
+    if url is None:
         return "NO_URL_FOUND"
     return "URL_FOUND"
 

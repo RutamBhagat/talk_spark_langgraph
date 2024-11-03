@@ -24,7 +24,7 @@ class ProfileData(TypedDict):
 def validate_url(url: str, platform: str) -> bool:
     """Validate if a URL matches the expected pattern for a given platform"""
     patterns = {
-        "wikipedia": re.compile(r"https://en.wikipedia.org/wiki/[\w-]+/?$"),
+        "wikipedia": re.compile(r"https://[a-z]{2,3}\.wikipedia\.org/wiki/[\w-]+/?$"),
     }
     pattern = patterns.get(platform.lower())
     return bool(pattern and pattern.match(url)) if url else False
@@ -49,25 +49,16 @@ async def search_profile(
     return extract_profile_url(results, platform)
 
 
-async def process_profiles(
-    state: GraphState, max_search_results: int = 1
-) -> Dict[str, ProfileData]:
+async def process_profiles(state: GraphState, max_search_results: int = 1):
     """Process profiles for a given person and update state"""
     # Search for profiles on Wikipedia
     wikipedia_url = await search_profile(state.person, "wikipedia", max_search_results)
 
-    # Update state with URLs
-    state.wikipedia_url = wikipedia_url
-    state.urls = [url for url in [wikipedia_url] if url != "no_url_found"]
+    # Update state with URL
+    state.url = wikipedia_url
 
     # Fetch profile data
     wikipedia_data = None
     if wikipedia_url != "no_url_found":
-        wikipedia_data = await scrape_profile(wikipedia_url, state.person)
+        wikipedia_data = await scrape_profile(wikipedia_url, person=state.person)
         state.scrapped_data = wikipedia_data
-
-    return {
-        "Wikipedia": ProfileData(
-            profile_url=wikipedia_url, scrapped_data=wikipedia_data, person=state.person
-        ),
-    }

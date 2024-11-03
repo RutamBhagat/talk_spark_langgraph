@@ -119,7 +119,7 @@ class BioGenerator:
         self.logger.info(
             "processing_bio_request",
             person=state.person,
-            urls=state.urls,
+            url=state.url,
         )
 
         # Check cache first
