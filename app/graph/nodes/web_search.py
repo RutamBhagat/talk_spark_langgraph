@@ -21,7 +21,7 @@ class ProfileData(TypedDict):
     person: Optional[str]
 
 
-def extract_profile_url(search_results: List[SearchResult], platform: str) -> str:
+def extract_profile_url(search_results: List[SearchResult]) -> str:
     """Extract the first valid profile URL from search results"""
     for result in search_results:
         url = result.get("url", "")
@@ -30,30 +30,28 @@ def extract_profile_url(search_results: List[SearchResult], platform: str) -> st
     return "no_url_found"
 
 
-async def search_profile(
-    person_name: str, platform: str, max_search_results: int = 5
-) -> str:
+async def search_profile(person_name: str, max_search_results: int = 5) -> str:
     """Search for a person's profile on a specific platform"""
     web_search_tool = TavilySearchResults(max_results=max_search_results)
     query = f"{person_name}"
     results = await web_search_tool.ainvoke({"query": query})
-    return extract_profile_url(results, platform)
+    return extract_profile_url(results)
 
 
 async def process_profiles(
     state: GraphState, max_search_results: int = 1
 ) -> GraphState:
     """Process profiles for a given person and update state"""
-    # Search for profiles on Wikipedia
-    wikipedia_url = await search_profile(state.person, "wikipedia", max_search_results)
+    # Search for profiles on internet
+    url = await search_profile(state.person, max_search_results)
 
     # Update state with URL
-    state.url = wikipedia_url
+    state.url = url
 
     # Fetch profile data
-    wikipedia_data = None
-    if wikipedia_url != "no_url_found":
-        wikipedia_data = await scrape_profile(wikipedia_url, person=state.person)
-        state.scrapped_data = wikipedia_data
+    data = None
+    if url != "no_url_found":
+        data = await scrape_profile(url, person=state.person)
+        state.scrapped_data = data
 
     return state
