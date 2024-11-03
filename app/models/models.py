@@ -9,15 +9,11 @@ class BioGeneration(BaseModel):
     summary: str = Field(
         description="Concise professional summary highlighting key achievements"
     )
-    interesting_facts: List[str] = Field(
-        description="Two unique facts about the person", max_items=2
+    interesting_facts: List[str] = Field(description="Unique facts about the person")
+    topics_of_interest: List[str] = Field(
+        description="Suggested conversation topics based on profile"
     )
-    topics_of_interest: str = Field(
-        description="Suggested conversation topic based on profile"
-    )
-    ice_breakers: List[str] = Field(
-        description="Two relevant conversation starters", max_items=2
-    )
+    ice_breakers: List[str] = Field(description="Relevant conversation starters")
 
 
 class DBProfile(SQLModel, table=True):

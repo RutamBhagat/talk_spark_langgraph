@@ -53,9 +53,9 @@ class BioGenerationChain:
                 If profile data is missing/insufficient, include 'Unable to generate - authentication required for scraping information' in fields.
                 Generate:
                 1. Summary: Current role, key achievements
-                2. Facts: 2 unique professional insights
-                3. Interest: Key topic for discussion
-                4. Ice-breakers: 2 relevant conversation starters
+                2. Facts: Unique professional insights
+                3. Interest: Key topics for discussion
+                4. Ice-breakers: Relevant conversation starters
                 Use profile context: {scrapped_data}"""
 
         prompt = ChatPromptTemplate.from_messages(
