@@ -50,6 +50,7 @@ class BioGenerationChain:
     def _build_chain(self) -> RunnableSequence:
         """Build the generation chain with optimized prompt"""
         system = """Professional bio generator. Create engaging LinkedIn bio from profile data.
+                If profile data is missing/insufficient, include 'Unable to generate - authentication required' in fields.
                 Generate:
                 1. Summary: Current role, key achievements
                 2. Facts: 2 unique professional insights

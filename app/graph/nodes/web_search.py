@@ -21,20 +21,11 @@ class ProfileData(TypedDict):
     person: Optional[str]
 
 
-def validate_url(url: str, platform: str) -> bool:
-    """Validate if a URL matches the expected pattern for a given platform"""
-    patterns = {
-        "wikipedia": re.compile(r"https://[a-z]{2,3}\.wikipedia\.org/wiki/[\w-]+/?$"),
-    }
-    pattern = patterns.get(platform.lower())
-    return bool(pattern and pattern.match(url)) if url else False
-
-
 def extract_profile_url(search_results: List[SearchResult], platform: str) -> str:
     """Extract the first valid profile URL from search results"""
     for result in search_results:
         url = result.get("url", "")
-        if validate_url(url, platform):
+        if url:
             return url
     return "no_url_found"
 
