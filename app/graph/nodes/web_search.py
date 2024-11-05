@@ -91,7 +91,7 @@ async def process_profiles(state: GraphState) -> GraphState:
 
         # Scrape profile if URL was found
         if state.url and state.url != "no_url_found":
-            state.scrapped_data = await scrape_profile(state.url, person=state.person)
+            state.scrapped_data += await scrape_profile(state.url, person=state.person)
 
         return state
 
