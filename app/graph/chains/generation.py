@@ -49,14 +49,14 @@ class BioGenerationChain:
 
     def _build_chain(self) -> RunnableSequence:
         """Build the generation chain with optimized prompt"""
-        system = """Professional bio generator. Create engaging LinkedIn bio from profile data.
-                If profile data is missing/insufficient, include 'Unable to generate - authentication required for scraping information' in fields.
-                Generate:
-                1. Summary: Current role, key achievements
-                2. Facts: Unique professional insights
-                3. Interest: Key topics for discussion
-                4. Ice-breakers: Relevant conversation starters
-                Use profile context: {scrapped_data}"""
+        system = """Generate LinkedIn bio from provided profile data.
+                    If field cannot be generated due to insufficient data, mark as 'Unable to generate - needs authentication'.
+                    Generate only using available info:
+                    1. Summary: Role & achievements
+                    2. Facts: Professional insights
+                    3. Interests: Discussion topics
+                    4. Ice-breakers: Conversation starters
+                    Context: {scrapped_data}"""
 
         prompt = ChatPromptTemplate.from_messages(
             [
