@@ -1,21 +1,45 @@
-FROM python:3.11-slim
+FROM python:3.10
 
-RUN pip install poetry==1.6.1
+ENV PYTHONUNBUFFERED=1
 
-RUN poetry config virtualenvs.create false
+WORKDIR /app/
 
-WORKDIR /code
+# Install uv
+# Ref: https://docs.astral.sh/uv/guides/integration/docker/#installing-uv
+COPY --from=ghcr.io/astral-sh/uv:0.4.15 /uv /bin/uv
 
-COPY ./pyproject.toml ./README.md ./poetry.lock* ./
+# Place executables in the environment at the front of the path
+# Ref: https://docs.astral.sh/uv/guides/integration/docker/#using-the-environment
+ENV PATH="/app/.venv/bin:$PATH"
 
-COPY ./package[s] ./packages
+# Compile bytecode
+# Ref: https://docs.astral.sh/uv/guides/integration/docker/#compiling-bytecode
+ENV UV_COMPILE_BYTECODE=1
 
-RUN poetry install  --no-interaction --no-ansi --no-root
+# uv Cache
+# Ref: https://docs.astral.sh/uv/guides/integration/docker/#caching
+ENV UV_LINK_MODE=copy
 
-COPY ./app ./app
+COPY README.md /app/
+COPY .env /app/.env
 
-RUN poetry install --no-interaction --no-ansi
+# Install dependencies
+# Ref: https://docs.astral.sh/uv/guides/integration/docker/#intermediate-layers
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project
 
-EXPOSE 8080
+ENV PYTHONPATH=/app
 
-CMD exec uvicorn app.server:app --host 0.0.0.0 --port 8080
+COPY ./pyproject.toml ./uv.lock /app/
+
+COPY ./app /app/app
+
+# Sync the project
+# Ref: https://docs.astral.sh/uv/guides/integration/docker/#intermediate-layers
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync
+
+# CMD ["fastapi", "run", "--workers", "4", "app/server.py"]
+CMD ["uvicorn", "app.server:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
