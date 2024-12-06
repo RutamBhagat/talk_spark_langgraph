@@ -1,4 +1,3 @@
-# controllers/bio.py
 from typing import Optional, Dict, Any
 from app.db.database import get_db
 from app.models.models import DBProfile

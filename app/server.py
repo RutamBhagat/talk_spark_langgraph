@@ -1,16 +1,15 @@
 from fastapi import FastAPI, APIRouter
 from fastapi.responses import RedirectResponse, JSONResponse, StreamingResponse
-from langserve import add_routes
-from dotenv import load_dotenv, find_dotenv
-from typing import AsyncGenerator
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv, find_dotenv
+from langserve import add_routes
+from typing import AsyncGenerator
 from contextlib import asynccontextmanager
 from app.db.database import engine, init_db
 from app.graph.state import GraphState
 from app.graph.graph import graph
 from app.middleware import time_middleware
 import asyncio
-import httpx
 
 load_dotenv(find_dotenv())
 
@@ -83,41 +82,11 @@ add_routes(
     enabled_endpoints=["invoke", "stream", "batch"],
 )
 
-
-async def hit_async_route():
-    """Send a request to the async route and print responses to the console."""
-    async with httpx.AsyncClient() as client:
-        request_data = {
-            "person": "Andrew NG"
-        }  # Populate this with valid GraphState data
-        response = client.request(
-            "POST", "http://0.0.0.0:8000/api/v1/talk_spark/", json=request_data
-        )
-        print("Streamed response chunk:", response)
-
-
-async def hit_stream_route():
-    """Send a request to the streaming route and print responses to the console."""
-    async with httpx.AsyncClient() as client:
-        request_data = {
-            "person": "Andrew NG"
-        }  # Populate this with valid GraphState data
-        async with client.stream(
-            "POST", "http://0.0.0.0:8000/api/v1/talk_spark/stream", json=request_data
-        ) as response:
-            async for line in response.aiter_lines():
-                print("Streamed response chunk:", line)
-
-
 if __name__ == "__main__":
     import uvicorn
 
     # Start FastAPI server and hit the stream route
     async def main():
-        server = uvicorn.run(
-            "main:app", host="0.0.0.0", port=8000, reload=True, workers=4
-        )
-        # await hit_stream_route()
-        # await hit_async_route()
+        uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True, workers=4)
 
     asyncio.run(main())

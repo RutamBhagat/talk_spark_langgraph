@@ -1,8 +1,5 @@
-import asyncio
 import aiohttp
 import re
-from typing import Optional
-from functools import partial
 from app.db.controllers.bio import get_user_by_profile_url, save_new_user
 
 

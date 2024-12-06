@@ -1,5 +1,4 @@
 from typing import Any, Dict, List, Optional, TypedDict, Tuple
-import re
 from langchain_community.tools import TavilySearchResults
 from app.graph.state import GraphState
 from app.graph.utils.scrape_profile import scrape_profile

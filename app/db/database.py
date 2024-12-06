@@ -1,4 +1,3 @@
-# app/db/database.py
 from sqlmodel import SQLModel, create_engine, Session
 from sqlalchemy.pool import StaticPool
 from contextlib import contextmanager

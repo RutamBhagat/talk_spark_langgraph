@@ -1,10 +1,10 @@
 import os
 from typing import Optional
 from dataclasses import dataclass
+from dotenv import load_dotenv
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableSequence
 from langchain_openai import ChatOpenAI
-from dotenv import load_dotenv
 
 from app.models.models import BioGeneration
 
