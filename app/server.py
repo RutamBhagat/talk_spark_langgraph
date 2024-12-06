@@ -5,11 +5,9 @@ from dotenv import load_dotenv, find_dotenv
 from typing import AsyncGenerator
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-from langchain_core.messages import AIMessageChunk
 from app.db.database import engine, init_db
-from app.models import models
 from app.graph.state import GraphState
-from app.graph.graph import c_rag_app
+from app.graph.graph import graph
 from app.middleware import time_middleware
 import asyncio
 import httpx
@@ -57,8 +55,8 @@ async def redirect_root_to_docs() -> RedirectResponse:
 
 
 async def stream_response(request: GraphState) -> AsyncGenerator[str, None]:
-    """Generate streamed response from c_rag_app in 'messages' stream mode."""
-    async for chunk in c_rag_app.astream(request.dict(), stream_mode="messages"):
+    """Generate streamed response from graph in 'messages' stream mode."""
+    async for chunk in graph.astream(request.dict(), stream_mode="messages"):
         if chunk.content:
             yield chunk.content
 
@@ -66,7 +64,7 @@ async def stream_response(request: GraphState) -> AsyncGenerator[str, None]:
 @api_v1_router.post("/talk_spark")
 async def talk_spark(request: GraphState) -> JSONResponse:
     """Handle a asynchronous conversation request."""
-    return await c_rag_app.ainvoke(request)
+    return await graph.ainvoke(request)
 
 
 @api_v1_router.post("/talk_spark/stream")
@@ -80,7 +78,7 @@ app.include_router(api_v1_router)
 
 add_routes(
     app,
-    c_rag_app,
+    graph,
     path="/api/v1/langserve",
     enabled_endpoints=["invoke", "stream", "batch"],
 )
