@@ -63,6 +63,7 @@ dependencies = [
     "asyncio>=3.4.3",
     "structlog>=24.4.0",
     "sqlmodel>=0.0.22",
+    "langgraph-cli[inmem]>=0.1.54",
 ]
 name = "C_RAG"
 version = "0.1.0"
